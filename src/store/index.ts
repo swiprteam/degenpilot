@@ -37,7 +37,7 @@ export const store = configureStore({
 setupListeners(store.dispatch);
 initStore(store);
 
-export const dispatch = (action: PayloadAction) => store.dispatch(action);
+export const dispatch = (action: PayloadAction<any>) => store.dispatch(action);
 
 export const getStoreState = () => {
   return store.getState();

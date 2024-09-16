@@ -1,21 +1,26 @@
-import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
-import content from "../data/content.json";
-import { chainImages } from "./mappings";
-import { FEATURED_WALLETS } from "./web3-constants";
-import { Chain } from "~/model/chain";
 import { createWeb3Modal, defaultSolanaConfig } from "@web3modal/solana/react";
-import { solana } from "@web3modal/solana/chains";
+import { ChainInterface } from "~/types/interfaces";
+import { evmToSolanaChain } from "./chains";
 
-/*
-const WAGMI_PROJECT_ID = "2f8447f1a50a7344246690dabdbfedd1";
+const WEB3MODAL_PROJECT_ID = "2f8447f1a50a7344246690dabdbfedd1";
 
 interface Web3ModalConfig {
-  web3Modal: ReturnType<typeof createWeb3Modal>;
-  config: any;
+  solana: {
+    instance: ReturnType<typeof createWeb3Modal>;
+    config: ReturnType<typeof defaultSolanaConfig>;
+  };
 }
-export const setupWeb3modal = (chains: ): Web3ModalConfig => {
-  const wagmiConfig = defaultSolanaConfig({
-    projectId: WAGMI_PROJECT_ID,
+export const setupWeb3modal = (chains: ChainInterface[]): Web3ModalConfig => {
+  const projectId = WEB3MODAL_PROJECT_ID;
+
+  const solanaChain = chains.find(
+    (n) => n.id === "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+  );
+  if (!solanaChain) throw new Error("No Solana chain found");
+
+  const solana = evmToSolanaChain(solanaChain);
+  const solanaConfig = defaultSolanaConfig({
+    projectId,
     metadata: {
       name: "degenpilot",
       description: "AppKit Example",
@@ -25,21 +30,19 @@ export const setupWeb3modal = (chains: ): Web3ModalConfig => {
     chains: [solana],
   });
 
-  const web3Modal = createWeb3Modal({
-    wagmiConfig,
-    chainImages,
-    projectId: WAGMI_PROJECT_ID,
-    featuredWalletIds: Object.values(FEATURED_WALLETS),
-    themeMode: "dark",
-    themeVariables: {
-      "--w3m-border-radius-master": "2px",
-      "--w3m-font-family": "Inter",
-      "--w3m-accent": "var(--primary)",
-      "--w3m-color-mix": "#C1C1C1",
-    },
+  const solanaWeb3Modal = createWeb3Modal({
+    solanaConfig,
+    chains: [solana],
+    projectId,
+    wallets: [
+      // Solana wallet adapters (check Custom connectors for more info)
+    ],
   });
 
-  return { web3Modal, config: wagmiConfig };
+  return {
+    solana: {
+      instance: solanaWeb3Modal,
+      config: solanaConfig,
+    },
+  };
 };
-
-*/

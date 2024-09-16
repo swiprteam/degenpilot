@@ -9,5 +9,7 @@ export const chainsIsLoadingSelector = createSelector(
 
 export const chainsSelector = createSelector(
   (state: IRootState) => state.web3,
-  (web3) => web3.chains.map((n) => new Chain(n))
+  (web3) => {
+    return web3.chains.map((n) => new Chain(n));
+  }
 );

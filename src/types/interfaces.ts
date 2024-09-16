@@ -7,7 +7,7 @@ import {
 } from "./types";
 
 export interface ChainInterface {
-  id: number;
+  id: number | string;
   name: string;
   nativeCurrency: { name: string; symbol: string; decimals: number };
   rpcUrls: {

@@ -2,7 +2,7 @@ import { ChainInterface } from "~/types/interfaces";
 import { Serializable } from "./serializable";
 
 export class Chain extends Serializable implements Chain {
-  id: number;
+  id: number | string;
   name: string;
   nativeCurrency: { name: string; symbol: string; decimals: number };
   rpcUrls: {
@@ -31,7 +31,7 @@ export class Chain extends Serializable implements Chain {
     };
   };
 
-  static byChainId: { [chainId: number]: Chain } = {};
+  static byChainId: { [chainId: number | string]: Chain } = {};
 
   constructor(chain: ChainInterface) {
     super();

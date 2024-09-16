@@ -1,28 +1,41 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { createWeb3Modal, defaultSolanaConfig } from "@web3modal/solana/react";
-import { solana, solanaTestnet, solanaDevnet } from "@web3modal/solana/chains";
-import { fetchChains } from "./api/api";
 import { ChainInterface } from "~/types/interfaces";
+import { setupWeb3modal } from "~/utils/setup-web3modal";
+import { fetchChains } from "./api/api";
 
-type Web3ModalConfig = ReturnType<typeof defaultSolanaConfig>;
+type Web3ModalConfig = ReturnType<typeof setupWeb3modal>;
+type SolanaConfig = ReturnType<typeof defaultSolanaConfig>;
+type SolanaWeb3Modal = ReturnType<typeof createWeb3Modal>;
+
 export interface Web3State {
   connectedAddress: string | null;
   loading: {
     chains: boolean;
-    web3ModalConfig: boolean;
+    solana: boolean;
   };
   chains: ChainInterface[];
-  config: Web3ModalConfig | null;
+  web3Modal: {
+    solana: {
+      config: SolanaConfig | null;
+      instance: SolanaWeb3Modal | null;
+    };
+  };
 }
 
 const initialState: Web3State = {
   connectedAddress: null,
   loading: {
     chains: true,
-    web3ModalConfig: true,
+    solana: true,
   },
   chains: [],
-  config: null,
+  web3Modal: {
+    solana: {
+      config: null,
+      instance: null,
+    },
+  },
 };
 
 const web3Slice = createSlice({
@@ -34,8 +47,14 @@ const web3Slice = createSlice({
       state.loading.chains = false;
     },
 
-    setConnectedAddress: (state, action: PayloadAction<`0x${string}`>) => {
+    setConnectedAddress: (state, action: PayloadAction<string | null>) => {
       state.connectedAddress = action.payload;
+    },
+    setWeb3Modal: (state, action: PayloadAction<Web3ModalConfig>) => {
+      const { solana } = action.payload;
+      state.web3Modal.solana.instance = solana.instance as any;
+      state.web3Modal.solana.config = solana.config;
+      state.loading.solana = false;
     },
   },
 
@@ -51,6 +70,7 @@ const web3Slice = createSlice({
   },
 });
 
-export const { setChains, setConnectedAddress } = web3Slice.actions;
+export const { setChains, setConnectedAddress, setWeb3Modal } =
+  web3Slice.actions;
 
 export const Web3Reducer = web3Slice.reducer;

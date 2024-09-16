@@ -1,11 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { useWeb3ModalAccount } from "@web3modal/solana/react";
+import { dispatch } from "./store";
+import { setConnectedAddress } from "./store/web3";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
+  const { address, isConnected } = useWeb3ModalAccount();
+
+  useEffect(() => {
+    if (isConnected && address) dispatch(setConnectedAddress(address));
+    else dispatch(setConnectedAddress(null));
+  }, [address, isConnected]);
   return (
     <>
       <div>
@@ -24,12 +33,13 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
+        <w3m-button />
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

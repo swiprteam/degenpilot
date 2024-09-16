@@ -3,34 +3,33 @@ import { createAsyncThunk, EnhancedStore } from "@reduxjs/toolkit";
 import localforage from "localforage";
 
 import { chains } from "~/utils/chains";
-import { IRootState } from "..";
-import { setChains } from "../web3";
+import { dispatch, IRootState } from "..";
+import { setChains, setWeb3Modal } from "../web3";
 import { Chain } from "~/model/chain";
 import axios from "axios";
 import { ChainInterface, TokenInterface } from "~/types/interfaces";
 import { Token } from "~/model/token";
 import { setTokens } from "../tokens";
+import { setupWeb3modal } from "~/utils/setup-web3modal";
 const refetchInterval = (fetchingFunction: CallableFunction, timer: number) => {
   return setInterval(fetchingFunction, timer);
 };
 
 export const initStore = async (store: EnhancedStore<IRootState>) => {
-  console.log("🚀 ~ initStore ~ store:", store);
   try {
-    const localNetworks: ChainInterface[] = JSON.parse(
+    const localChains: ChainInterface[] = JSON.parse(
       (await localforage.getItem("networks")) ?? "[]"
     );
-    console.log("🚀 ~ initStore ~ localNetworks:", localNetworks);
 
     const localTokens: TokenInterface[] = JSON.parse(
       (await localforage.getItem("tokens")) ?? "[]"
     );
-    console.log("🚀 ~ initStore ~ localTokens:", localTokens);
 
-    if (!localNetworks.length) throw Error("No networks on local");
+    if (!localChains.length) throw Error("No networks on local");
     if (!localTokens.length) throw new Error("No tokens on local");
-    store.dispatch(setChains(localNetworks.map((n) => new Chain(n))));
+    store.dispatch(setChains(localChains.map((n) => new Chain(n))));
     store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
+    store.dispatch(setWeb3Modal(setupWeb3modal(localChains)));
   } catch (_) {
     Promise.all([
       store.dispatch(fetchChains() as any).unwrap(),
@@ -46,6 +45,8 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
 export const fetchChains = createAsyncThunk<ChainInterface[]>(
   "api/chains",
   async () => {
+    const config = setupWeb3modal(chains) as any;
+    dispatch(setWeb3Modal(config));
     return chains;
   }
 );

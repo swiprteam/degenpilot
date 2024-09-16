@@ -13,5 +13,6 @@ export const getChainsIsLoding = () => {
 
 export const getChains = () => {
   const state = getStoreState();
+
   return chainsSelector(state);
 };
