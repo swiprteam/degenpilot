@@ -1,22 +1,28 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ChainInterface } from "~/model/chain";
-
+import { createWeb3Modal, defaultSolanaConfig } from "@web3modal/solana/react";
+import { solana, solanaTestnet, solanaDevnet } from "@web3modal/solana/chains";
 import { fetchChains } from "./api/api";
+import { ChainInterface } from "~/types/interfaces";
 
+type Web3ModalConfig = ReturnType<typeof defaultSolanaConfig>;
 export interface Web3State {
   connectedAddress: string | null;
   loading: {
     chains: boolean;
+    web3ModalConfig: boolean;
   };
   chains: ChainInterface[];
+  config: Web3ModalConfig | null;
 }
 
 const initialState: Web3State = {
   connectedAddress: null,
   loading: {
     chains: true,
+    web3ModalConfig: true,
   },
   chains: [],
+  config: null,
 };
 
 const web3Slice = createSlice({

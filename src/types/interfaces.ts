@@ -1,4 +1,12 @@
-export type Chain = {
+import {
+  Agregation,
+  Score,
+  TokenFinancial,
+  TokenMeta,
+  TokenSocial,
+} from "./types";
+
+export interface ChainInterface {
   id: number;
   name: string;
   nativeCurrency: { name: string; symbol: string; decimals: number };
@@ -27,4 +35,12 @@ export type Chain = {
       blockCreated: number;
     };
   };
-};
+}
+
+export interface TokenInterface {
+  score: Score;
+  meta: TokenMeta;
+  financial: TokenFinancial;
+  social: TokenSocial;
+  poolsAggregation: Agregation;
+}

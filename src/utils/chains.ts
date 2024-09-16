@@ -1,4 +1,4 @@
-import { ChainInterface } from "~/model/chain";
+import { ChainInterface } from "~/types/interfaces";
 
 export const chains: ChainInterface[] = [
   {

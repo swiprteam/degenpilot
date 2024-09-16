@@ -4,12 +4,12 @@ import {
   convertClassToObjectMiddleware,
   promiseAwaitingMiddleware,
 } from "./middlewares";
-
+import persistMiddleware from "./middlewares/persist";
 import localforage from "localforage";
 import { Web3Reducer } from "./web3";
 import { initStore } from "./api/api";
+import { TokensReducer } from "./tokens";
 
-//import reduxApis, { endpoints } from "./api/api";
 export type IRootState = {
   web3: ReturnType<typeof Web3Reducer>;
 };
@@ -23,11 +23,16 @@ localforage.config({
 export const store = configureStore({
   reducer: {
     web3: Web3Reducer,
+    tokens: TokensReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat(convertClassToObjectMiddleware, promiseAwaitingMiddleware),
+    }).concat(
+      convertClassToObjectMiddleware,
+      promiseAwaitingMiddleware,
+      ...persistMiddleware
+    ),
 });
 setupListeners(store.dispatch);
 initStore(store);
