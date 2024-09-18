@@ -38,6 +38,7 @@ export interface ChainInterface {
 }
 
 export interface TokenInterface {
+  id: string;
   score: Score;
   meta: TokenMeta;
   financial: TokenFinancial;

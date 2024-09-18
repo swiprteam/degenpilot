@@ -8,6 +8,7 @@ export interface TokensState {
     tokens: boolean;
   };
   list: TokenInterface[];
+  selected: number;
 }
 
 const initialState: TokensState = {
@@ -15,6 +16,7 @@ const initialState: TokensState = {
     tokens: true,
   },
   list: [],
+  selected: null,
 };
 
 const tokensSlice = createSlice({
@@ -24,9 +26,12 @@ const tokensSlice = createSlice({
     setTokens: (state, action: PayloadAction<TokenInterface[]>) => {
       state.list = action.payload;
       state.loading.tokens = false;
+      if (state.selected === null) state.selected = 0;
+    },
+    setSelected: (state, action: PayloadAction<number>) => {
+      state.selected = action.payload;
     },
   },
-
   extraReducers: (builder) => {
     builder
       .addCase(fetchTokens.pending, (state) => {
@@ -39,6 +44,6 @@ const tokensSlice = createSlice({
   },
 });
 
-export const { setTokens } = tokensSlice.actions;
+export const { setTokens, setSelected } = tokensSlice.actions;
 
 export const TokensReducer = tokensSlice.reducer;

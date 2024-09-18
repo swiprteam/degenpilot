@@ -12,6 +12,7 @@ import { TokensReducer } from "./tokens";
 
 export type IRootState = {
   web3: ReturnType<typeof Web3Reducer>;
+  tokens: ReturnType<typeof TokensReducer>;
 };
 
 localforage.config({
@@ -34,6 +35,7 @@ export const store = configureStore({
       ...persistMiddleware
     ),
 });
+
 setupListeners(store.dispatch);
 initStore(store);
 

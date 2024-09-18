@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
 import { useWeb3ModalAccount } from "@web3modal/solana/react";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
+import "./App.css";
+import TokenCard from "./components/TokenCard";
+import { useSelectedToken, useTokens } from "./hooks/tokens";
 import { dispatch } from "./store";
 import { setConnectedAddress } from "./store/web3";
 
+import { selectNext } from "./services/tokens";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -15,29 +17,36 @@ function App() {
     if (isConnected && address) dispatch(setConnectedAddress(address));
     else dispatch(setConnectedAddress(null));
   }, [address, isConnected]);
+
+  const tokens = useTokens();
+  const selectedToken = useSelectedToken();
+
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-        <w3m-button />
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button onClick={() => setCount((count) => count + 1)}>
+        count is {count}
+      </button>
+
+      <ul>
+        {tokens.map((token) => (
+          <div
+            key={token.id}
+            className={clsx({
+              hidden: token.id !== selectedToken.id,
+            })}
+          >
+            <TokenCard token={token} />
+            <button>Cancel</button>
+            <button
+              onClick={() => {
+                selectNext();
+              }}
+            >
+              Buy
+            </button>
+          </div>
+        ))}
+      </ul>
     </>
   );
 }
