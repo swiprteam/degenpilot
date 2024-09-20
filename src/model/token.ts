@@ -1,32 +1,25 @@
 import { TokenInterface } from "~/types/interfaces";
 import { Serializable } from "./serializable";
-import {
-  Agregation,
-  Score,
-  TokenFinancial,
-  TokenMeta,
-  TokenSocial,
-} from "~/types/types";
+import { Score, TokenInfo, TokenLinks } from "~/types/types";
 
-import { v4 as uuid } from "uuid";
-export class Token extends Serializable implements TokenInterface {
-  id: string;
+export class Token
+  extends Serializable<TokenInterface>
+  implements TokenInterface
+{
+  _id: string;
+  info: TokenInfo;
+  links: TokenLinks;
   score: Score;
-  meta: TokenMeta;
-  financial: TokenFinancial;
-  social: TokenSocial;
-  poolsAggregation: Agregation;
 
-  static byId: { [id: string]: TokenInterface } = {};
-
+  static byId: { [_id: string]: TokenInterface } = {};
   constructor(token: TokenInterface) {
     super();
-    this.id = token.id ?? uuid();
+    this._id = token._id;
     this.score = token.score;
-    this.meta = token.meta;
-    this.financial = token.financial;
-    this.social = token.social;
-    this.poolsAggregation = token.poolsAggregation;
-    Token.byId[this.id] = this;
+    this.info = token.info;
+    this.links = token.links;
+    this.score = token.score;
+
+    Token.byId[this._id] = this;
   }
 }

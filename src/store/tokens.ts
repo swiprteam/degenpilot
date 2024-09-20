@@ -3,12 +3,16 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { TokenInterface } from "~/types/interfaces";
 import { fetchTokens } from "./api/api";
 
+export type TokenHistory = {
+  left: string[];
+  right: string[];
+};
 export interface TokensState {
   loading: {
     tokens: boolean;
   };
   list: TokenInterface[];
-  selected: number;
+  history: TokenHistory;
 }
 
 const initialState: TokensState = {
@@ -16,20 +20,40 @@ const initialState: TokensState = {
     tokens: true,
   },
   list: [],
-  selected: null,
+  history: {
+    left: [],
+    right: [],
+  },
 };
 
 const tokensSlice = createSlice({
   name: "tokens",
   initialState,
   reducers: {
+    initHistory: (state, action: PayloadAction<TokenHistory>) => {
+      if (action.payload.left.length === 0 && action.payload.right.length === 0)
+        return;
+      state.history = action.payload;
+    },
     setTokens: (state, action: PayloadAction<TokenInterface[]>) => {
       state.list = action.payload;
       state.loading.tokens = false;
-      if (state.selected === null) state.selected = 0;
     },
-    setSelected: (state, action: PayloadAction<number>) => {
-      state.selected = action.payload;
+    swapRight: (state) => {
+      const filteredTokens = state.list.filter(
+        ({ _id }) =>
+          !state.history.left.includes(_id) &&
+          !state.history.right.includes(_id)
+      );
+      state.history.right.push(filteredTokens[0]._id);
+    },
+    swapLeft: (state) => {
+      const filteredTokens = state.list.filter(
+        ({ _id }) =>
+          !state.history.left.includes(_id) &&
+          !state.history.right.includes(_id)
+      );
+      state.history.left.push(filteredTokens[0]._id);
     },
   },
   extraReducers: (builder) => {
@@ -44,6 +68,7 @@ const tokensSlice = createSlice({
   },
 });
 
-export const { setTokens, setSelected } = tokensSlice.actions;
+export const { setTokens, swapLeft, swapRight, initHistory } =
+  tokensSlice.actions;
 
 export const TokensReducer = tokensSlice.reducer;

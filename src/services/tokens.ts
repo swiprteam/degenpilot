@@ -1,6 +1,8 @@
-import { Token } from "~/model/token";
 import { dispatch, getStoreState } from "~/store";
-import { setSelected } from "~/store/tokens";
+import {
+  swapRight as storeSwapRight,
+  swapLeft as storeSwapLeft,
+} from "~/store/tokens";
 
 export const getTokensStore = () => {
   return getStoreState().tokens;
@@ -10,12 +12,9 @@ export const getTokens = () => {
   return getTokensStore().list;
 };
 
-export const getSelectedToken = () => {
-  const store = getTokensStore();
-  return new Token(store.list[store.selected]);
+export const swapRight = () => {
+  return dispatch(storeSwapRight());
 };
-
-export const selectNext = () => {
-  const store = getTokensStore();
-  return dispatch(setSelected(store.selected + 1));
+export const swapLeft = () => {
+  return dispatch(storeSwapLeft());
 };

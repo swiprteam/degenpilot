@@ -6,8 +6,8 @@ type Props = {
 const TokenCard = ({ token }: Props) => {
   return (
     <div>
-      <h1>{token.meta.name}</h1>
-      <p>{token.meta.symbol}</p>
+      <h1>{token.info.name}</h1>
+      <p>{token.info.symbol}</p>
     </div>
   );
 };

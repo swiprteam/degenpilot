@@ -1,10 +1,4 @@
-import {
-  Agregation,
-  Score,
-  TokenFinancial,
-  TokenMeta,
-  TokenSocial,
-} from "./types";
+import { Score, TokenInfo, TokenLinks } from "./types";
 
 export interface ChainInterface {
   id: number | string;
@@ -38,10 +32,8 @@ export interface ChainInterface {
 }
 
 export interface TokenInterface {
-  id: string;
+  _id: string;
+  info: TokenInfo;
+  links: TokenLinks;
   score: Score;
-  meta: TokenMeta;
-  financial: TokenFinancial;
-  social: TokenSocial;
-  poolsAggregation: Agregation;
 }

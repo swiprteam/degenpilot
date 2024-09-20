@@ -1,19 +1,15 @@
-export type Score = {
-  score: number;
-  details: {
-    social: {
-      sentiment: { ssePenalty: number };
-      smartEngagement: { ssePenalty: number };
-      mindshare: { ssePenalty: number };
-    };
-    dailyVolumePercentage: number;
-    liquidityPercentage: number;
-    top10HolderPercentage: number;
-    mintAuthority: string;
-    freezeAuthority: string;
-    creationDatePenalty: number;
-  };
+export type ScoreDetail = {
+  pros: string[];
+  cons: string[];
 };
+
+export type Score = {
+  value: number;
+  title: string;
+  color: string;
+  details: ScoreDetail;
+};
+
 export type TokenMeta = {
   name: string;
   symbol: string;
@@ -29,17 +25,20 @@ export type TokenFinancial = {
   marketCap: number;
 };
 
-export type TokenSocial = {
-  discord: string | null;
-  twitter: string | null;
-  telegram: string | null;
-  website: string | null;
+export type TokenInfo = {
+  name: string;
+  symbol: string;
+  address: string;
+  imageUrl: string;
+  h24Change: number;
+  h6Change: number;
+  decimals: number;
+  chainId: number;
+  rooterContract: string;
 };
-
-export type Agregation = {
-  total: {
-    liquidity: number;
-    volume: { hour: number; day: number };
-    poolsLength: number;
-  };
+export type TokenLinks = {
+  website: string;
+  twitter: string;
+  telegram: string;
+  discord: string;
 };

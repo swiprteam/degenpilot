@@ -10,4 +10,21 @@ const persistAPIDataMiddleware: Middleware = () => (next) => (action: any) => {
   }
 };
 
-export default [persistAPIDataMiddleware] as Middleware[];
+const persistTokenHistoryMiddleware: Middleware =
+  (store) => (next) => (action: any) => {
+    next(action);
+    if (
+      action.type === "tokens/swapRight" ||
+      action.type === "tokens/swapLeft"
+    ) {
+      localforage.setItem(
+        "history",
+        JSON.stringify(store.getState().tokens.history)
+      );
+    }
+  };
+
+export default [
+  persistAPIDataMiddleware,
+  persistTokenHistoryMiddleware,
+] as Middleware[];

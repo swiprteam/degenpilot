@@ -24,7 +24,9 @@ export const convertClassToObjectMiddleware: Middleware =
   () => (next) => (action: any) => {
     if (action.payload?.map) {
       if (action.payload[0] instanceof Serializable) {
-        action.payload = action.payload.map((e: Serializable) => e.toObject());
+        action.payload = action.payload.map((e: Serializable<any>) =>
+          e.toObject()
+        );
       }
     } else if ((action.payload as any) instanceof Serializable) {
       action.payload = action.payload.toObject();

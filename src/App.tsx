@@ -3,11 +3,11 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import "./App.css";
 import TokenCard from "./components/TokenCard";
-import { useSelectedToken, useTokens } from "./hooks/tokens";
+import { useSwappableTokens } from "./hooks/tokens";
 import { dispatch } from "./store";
 import { setConnectedAddress } from "./store/web3";
+import { swapLeft, swapRight } from "./services/tokens";
 
-import { selectNext } from "./services/tokens";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -18,34 +18,32 @@ function App() {
     else dispatch(setConnectedAddress(null));
   }, [address, isConnected]);
 
-  const tokens = useTokens();
-  const selectedToken = useSelectedToken();
+  const tokens = useSwappableTokens();
 
   return (
     <>
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-
       <ul>
-        {tokens.map((token) => (
-          <div
-            key={token.id}
-            className={clsx({
-              hidden: token.id !== selectedToken.id,
-            })}
-          >
-            <TokenCard token={token} />
-            <button>Cancel</button>
-            <button
-              onClick={() => {
-                selectNext();
-              }}
+        {tokens.length === 0 && <div>No tokens to see</div>}
+        {tokens.map((token, _index) => {
+          return (
+            <div
+              key={token._id}
+              className={clsx({
+                hidden: _index !== 0,
+              })}
             >
-              Buy
-            </button>
-          </div>
-        ))}
+              <TokenCard token={token} />
+              <button onClick={() => swapLeft()}>Cancel</button>
+              <button
+                onClick={() => {
+                  swapRight();
+                }}
+              >
+                Buy
+              </button>
+            </div>
+          );
+        })}
       </ul>
     </>
   );

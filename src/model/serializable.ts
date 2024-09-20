@@ -1,5 +1,5 @@
-export abstract class Serializable {
-  toObject(): Partial<this> {
+export abstract class Serializable<SerializableData> {
+  toObject(): Partial<SerializableData> {
     return Object.assign({}, this);
   }
   toString(): string {

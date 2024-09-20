@@ -1,7 +1,7 @@
 import { ChainInterface } from "~/types/interfaces";
 import { Serializable } from "./serializable";
 
-export class Chain extends Serializable implements Chain {
+export class Chain extends Serializable<ChainInterface> implements Chain {
   id: number | string;
   name: string;
   nativeCurrency: { name: string; symbol: string; decimals: number };
