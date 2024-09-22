@@ -12,14 +12,12 @@ export interface Web3State {
   connectedAddress: string | null;
   loading: {
     chains: boolean;
-    solana: boolean;
+    web3Modal: boolean;
   };
   chains: ChainInterface[];
   web3Modal: {
-    solana: {
-      config: SolanaConfig | null;
-      instance: SolanaWeb3Modal | null;
-    };
+    config: SolanaConfig | null;
+    instance: SolanaWeb3Modal | null;
   };
 }
 
@@ -27,14 +25,12 @@ const initialState: Web3State = {
   connectedAddress: null,
   loading: {
     chains: true,
-    solana: true,
+    web3Modal: true,
   },
   chains: [],
   web3Modal: {
-    solana: {
-      config: null,
-      instance: null,
-    },
+    config: null,
+    instance: null,
   },
 };
 
@@ -52,9 +48,9 @@ const web3Slice = createSlice({
     },
     setWeb3Modal: (state, action: PayloadAction<Web3ModalConfig>) => {
       const { solana } = action.payload;
-      state.web3Modal.solana.instance = solana.instance as any;
-      state.web3Modal.solana.config = solana.config;
-      state.loading.solana = false;
+      state.web3Modal.instance = solana.instance as any;
+      state.web3Modal.config = solana.config;
+      state.loading.web3Modal = false;
     },
   },
 

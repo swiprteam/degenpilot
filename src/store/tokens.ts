@@ -41,19 +41,17 @@ const tokensSlice = createSlice({
     },
     swapRight: (state) => {
       const filteredTokens = state.list.filter(
-        ({ _id }) =>
-          !state.history.left.includes(_id) &&
-          !state.history.right.includes(_id)
+        ({ id }) =>
+          !state.history.left.includes(id) && !state.history.right.includes(id)
       );
-      state.history.right.push(filteredTokens[0]._id);
+      state.history.right.push(filteredTokens[0].id);
     },
     swapLeft: (state) => {
       const filteredTokens = state.list.filter(
-        ({ _id }) =>
-          !state.history.left.includes(_id) &&
-          !state.history.right.includes(_id)
+        ({ id }) =>
+          !state.history.left.includes(id) && !state.history.right.includes(id)
       );
-      state.history.left.push(filteredTokens[0]._id);
+      state.history.left.push(filteredTokens[0].id);
     },
   },
   extraReducers: (builder) => {

@@ -11,8 +11,8 @@ export const useSwappableTokens = (): TokenInterface[] => {
   return useSelector((state: IRootState) => {
     return state.tokens.list.filter(
       (token) =>
-        !state.tokens.history.left.includes(token._id) &&
-        !state.tokens.history.right.includes(token._id)
+        !state.tokens.history.left.includes(token.id) &&
+        !state.tokens.history.right.includes(token.id)
     );
   });
 };

@@ -2,7 +2,7 @@ import { createWeb3Modal, defaultSolanaConfig } from "@web3modal/solana/react";
 import { ChainInterface } from "~/types/interfaces";
 import { evmToSolanaChain } from "./chains";
 
-const WEB3MODAL_PROJECT_ID = "2f8447f1a50a7344246690dabdbfedd1";
+const WEB3MODAL_PROJECTid = "2f8447f1a50a7344246690dabdbfedd1";
 
 interface Web3ModalConfig {
   solana: {
@@ -11,7 +11,7 @@ interface Web3ModalConfig {
   };
 }
 export const setupWeb3modal = (chains: ChainInterface[]): Web3ModalConfig => {
-  const projectId = WEB3MODAL_PROJECT_ID;
+  const projectId = WEB3MODAL_PROJECTid;
 
   const solanaChain = chains.find(
     (n) => n.id === "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"

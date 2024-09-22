@@ -9,10 +9,12 @@ import localforage from "localforage";
 import { Web3Reducer } from "./web3";
 import { initStore } from "./api/api";
 import { TokensReducer } from "./tokens";
+import { AppReducer } from "./app";
 
 export type IRootState = {
   web3: ReturnType<typeof Web3Reducer>;
   tokens: ReturnType<typeof TokensReducer>;
+  app: ReturnType<typeof AppReducer>;
 };
 
 localforage.config({
@@ -25,6 +27,7 @@ export const store = configureStore({
   reducer: {
     web3: Web3Reducer,
     tokens: TokensReducer,
+    app: AppReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

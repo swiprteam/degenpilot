@@ -32,7 +32,7 @@ export interface ChainInterface {
 }
 
 export interface TokenInterface {
-  _id: string;
+  id: string;
   info: TokenInfo;
   links: TokenLinks;
   score: Score;

@@ -24,7 +24,16 @@ const persistTokenHistoryMiddleware: Middleware =
     }
   };
 
+const persistShowLandingMiddleware: Middleware =
+  () => (next) => (action: any) => {
+    next(action);
+    if (action.type === "app/setShowLanding") {
+      localforage.setItem("landing", action.payload);
+    }
+  };
+
 export default [
   persistAPIDataMiddleware,
   persistTokenHistoryMiddleware,
+  persistShowLandingMiddleware,
 ] as Middleware[];
