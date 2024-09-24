@@ -1,11 +1,11 @@
-import { swapLeft, swapRight } from "~/store/tokens";
-import TokenCard from "./TokenCard";
 import clsx from "clsx";
 import { useSwappableTokens } from "~/hooks/tokens";
 
 import Header from "./Header";
 import { AppLayout } from "~/utils/styled";
 import AuthLayout from "~/layout/AuthLayout";
+import { swapLeft, swapRight } from "~/services/tokens";
+import TokenCard from "./token-card/card";
 
 const TokenList = () => {
   const tokens = useSwappableTokens();

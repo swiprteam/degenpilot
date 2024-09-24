@@ -1,4 +1,4 @@
-import { AddressButton } from "~/utils/styled";
+import { AddressButton, Box } from "~/utils/styled";
 import Logo from "./Logo";
 import { useWeb3ModalAccount } from "@web3modal/solana/react";
 import { shortenAddress } from "~/utils/utils";
@@ -8,13 +8,18 @@ const Header = () => {
   const { address } = useWeb3ModalAccount();
   const { instance } = useWeb3Modal();
   return (
-    <header className="flex w-full overflow-hidden bg-secondary p-4">
-      <Logo className="w-10" />
-      <div className="w-full flex justify-end">
-        <AddressButton onClick={() => instance.open()}>
-          {shortenAddress(address)}
-        </AddressButton>
-      </div>
+    <header className="overflow-hidden">
+      <Box className="p-4 flex w-full ">
+        <Logo className="w-10" />
+        <div className="w-full flex justify-end">
+          <AddressButton
+            className="text-primary"
+            onClick={() => instance.open()}
+          >
+            {shortenAddress(address)}
+          </AddressButton>
+        </div>
+      </Box>
     </header>
   );
 };

@@ -35,6 +35,7 @@ export type TokenInfo = {
   decimals: number;
   chainId: number;
   rooterContract: string;
+  marketCap: number;
 };
 export type TokenLinks = {
   website: string;

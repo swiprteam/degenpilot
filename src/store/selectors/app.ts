@@ -7,3 +7,9 @@ export const landingSelector = createSelector(
     return app.landing;
   }
 );
+export const isInitSelector = createSelector(
+  (state: IRootState) => state.app,
+  (app) => {
+    return app.isInit;
+  }
+);

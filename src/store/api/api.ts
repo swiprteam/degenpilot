@@ -11,7 +11,7 @@ import { ChainInterface, TokenInterface } from "~/types/interfaces";
 import { Token } from "~/model/token";
 import { initHistory, setTokens, TokenHistory } from "../tokens";
 import { setupWeb3modal } from "~/utils/setup-web3modal";
-import { setShowLanding } from "../app";
+import { setIsInit, setShowLanding } from "../app";
 const refetchInterval = (fetchingFunction: CallableFunction, timer: number) => {
   return setInterval(fetchingFunction, timer);
 };
@@ -38,10 +38,12 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
     store.dispatch(setChains(localChains.map((n) => new Chain(n))));
     store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
     store.dispatch(setWeb3Modal(setupWeb3modal(localChains)));
+    store.dispatch(setIsInit(true));
   } catch (_) {
     Promise.all([
       store.dispatch(fetchChains() as any).unwrap(),
       store.dispatch(fetchTokens() as any).unwrap(),
+      store.dispatch(setIsInit(true)),
     ]);
   }
 
