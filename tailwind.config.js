@@ -9,7 +9,8 @@ export default {
       colors: {
         primary: '#00A7DC',
         secondary: '#0C2243',
-        success: '#58C502'
+        success: '#58C502',
+        error: '#ED5454'
       }
     },
   },

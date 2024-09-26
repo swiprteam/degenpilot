@@ -4,11 +4,10 @@ import Logo from "./Logo";
 import { dispatch } from "~/store";
 import { setShowLanding } from "~/store/app";
 import { FaArrowRight } from "react-icons/fa";
-import { AppLayout } from "~/utils/styled";
 
 const Landing = () => {
   return (
-    <AppLayout>
+    <Layout>
       <StyledLanding>
         <div className="flex flex-col">
           <div className="content justify-center flex flex-col">
@@ -41,11 +40,19 @@ const Landing = () => {
           </LandingButton>
         </div>
       </StyledLanding>
-    </AppLayout>
+    </Layout>
   );
 };
 export default Landing;
 
+export const Layout = styled.div`
+  background: #03112c;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+`;
 export const StyledLanding = styled.div`
   flex: 1;
   height: 100%;

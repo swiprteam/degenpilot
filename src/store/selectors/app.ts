@@ -13,3 +13,10 @@ export const isInitSelector = createSelector(
     return app.isInit;
   }
 );
+
+export const showVideoSelector = createSelector(
+  (state: IRootState) => state.app,
+  (app) => {
+    return app.showVideo;
+  }
+);

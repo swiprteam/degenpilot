@@ -29,6 +29,12 @@ a:hover {
 * {
   box-sizing: border-box;
 }
+
+.centerXY {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 body {
   margin: 0;
   place-items: center;

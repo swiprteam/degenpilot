@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-
 const CircularGauge = ({
   score,
   radius = 40,
 }: {
   score: number;
-  radius: number;
+  radius?: number;
 }) => {
   //const [score, setScore] = useState(75);
   const svgSize = 160;
@@ -54,7 +52,7 @@ const CircularGauge = ({
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="relative mb-8">
+      <div className="relative">
         <svg width="320" height="320" viewBox={`0 0 ${svgSize} ${svgSize}`}>
           <g id="bars">{createBars()}</g>
           <text
@@ -63,19 +61,19 @@ const CircularGauge = ({
             textAnchor="middle"
             dominantBaseline="central"
             fill="white"
-            fontSize={radius * 0.5}
+            fontSize={radius * 0.3}
             fontWeight="600"
             fontFamily="Arial, Helvetica, sans-serif"
           >
             {score}
           </text>
           <text
-            x={center + radius / 3}
-            y={center}
+            x={center + radius / 2.5}
+            y={center - radius / 5}
             textAnchor="start"
             dominantBaseline="baseline"
             fill="white"
-            fontSize={radius * 0.3}
+            fontSize={radius * 0.2}
             fontWeight="400"
             fontFamily="Arial, Helvetica, sans-serif"
           >

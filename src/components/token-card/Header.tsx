@@ -1,6 +1,5 @@
 import { TokenInterface } from "~/types/interfaces";
 import solana from "@/assets/solana.png";
-import Share from "@/svg/share.svg?react";
 import { Box } from "~/utils/styled";
 import TokenImage from "../TokenImage";
 const Header = ({ token }: { token: TokenInterface }) => (
@@ -8,20 +7,22 @@ const Header = ({ token }: { token: TokenInterface }) => (
     <div className="flex flex-col justify-center">
       <TokenImage token={token} />
     </div>
-    <div className="ml-3 flex flex-wrap">
-      <h1 className="text-3xl items-center flex w-full pr-6">
+    <div className="ml-6 flex flex-wrap">
+      <h1 className="text-2xl items-center flex w-full pr-6">
         {token.info.name}
         <div>
           <img src={solana} alt="solana" className="w-5 ml-2" />
         </div>
       </h1>
 
+      {/**
       <ul className="absolute right-0 top-0 flex flex-col">
         <li className="p-3">
           <Share />
         </li>
       </ul>
-      <ul className="flex w-full">
+      */}
+      <ul className="flex w-full mt-8">
         {token.info.marketCap && (
           <li className="w-1/2">
             <span className="block text-xs">MCap</span>

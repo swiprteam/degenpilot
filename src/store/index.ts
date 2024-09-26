@@ -5,6 +5,7 @@ import {
   promiseAwaitingMiddleware,
 } from "./middlewares";
 import persistMiddleware from "./middlewares/persist";
+import appMiddleware from "./middlewares/app";
 import localforage from "localforage";
 import { Web3Reducer } from "./web3";
 import { initStore } from "./api/api";
@@ -35,7 +36,8 @@ export const store = configureStore({
     }).concat(
       convertClassToObjectMiddleware,
       promiseAwaitingMiddleware,
-      ...persistMiddleware
+      ...persistMiddleware,
+      ...appMiddleware
     ),
 });
 

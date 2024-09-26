@@ -21,7 +21,8 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
     (await localforage.getItem("history")) ?? `{"left": [],"right": []}`
   );
 
-  const landing: boolean = !!(await localforage.getItem("landing"));
+  const landing: boolean = await localforage.getItem("landing");
+  console.log("🚀 ~ initStore ~ landing:", landing);
   store.dispatch(setShowLanding(landing));
   store.dispatch(initHistory(localHistory));
   try {
@@ -41,6 +42,7 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
     store.dispatch(setIsInit(true));
   } catch (_) {
     Promise.all([
+      store.dispatch(setShowLanding(true)),
       store.dispatch(fetchChains() as any).unwrap(),
       store.dispatch(fetchTokens() as any).unwrap(),
       store.dispatch(setIsInit(true)),

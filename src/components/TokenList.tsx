@@ -4,40 +4,33 @@ import { useSwappableTokens } from "~/hooks/tokens";
 import Header from "./Header";
 import { AppLayout } from "~/utils/styled";
 import AuthLayout from "~/layout/AuthLayout";
-import { swapLeft, swapRight } from "~/services/tokens";
-import TokenCard from "./token-card/card";
+import TokenCard from "./token-card/Card";
 
 const TokenList = () => {
   const tokens = useSwappableTokens();
 
   return (
     <AppLayout>
-      <AuthLayout>
-        <Header />
-        <ul>
-          {tokens.length === 0 && <div>No tokens to see</div>}
-          {tokens.map((token, _index) => {
-            return (
-              <div
-                key={token.id}
-                className={clsx({
-                  hidden: _index !== 0,
-                })}
-              >
-                <TokenCard token={token} />
-                <button onClick={() => swapLeft()}>Cancel</button>
-                <button
-                  onClick={() => {
-                    swapRight();
-                  }}
+      <div className="mb-8">
+        <AuthLayout>
+          <Header />
+          <ul>
+            {tokens.length === 0 && <div>No tokens to see</div>}
+            {tokens.map((token, _index) => {
+              return (
+                <div
+                  key={token.id}
+                  className={clsx({
+                    hidden: _index !== 0,
+                  })}
                 >
-                  Buy
-                </button>
-              </div>
-            );
-          })}
-        </ul>
-      </AuthLayout>
+                  <TokenCard token={token} />
+                </div>
+              );
+            })}
+          </ul>
+        </AuthLayout>
+      </div>
     </AppLayout>
   );
 };

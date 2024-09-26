@@ -35,7 +35,6 @@ export const Button = styled.button`
 export const Square = styled.div`
   position: relative;
   display: block;
-  width: 121px;
   overflow: hidden;
   &::before {
     content: "";

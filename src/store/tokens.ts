@@ -39,19 +39,11 @@ const tokensSlice = createSlice({
       state.list = action.payload;
       state.loading.tokens = false;
     },
-    swapRight: (state) => {
-      const filteredTokens = state.list.filter(
-        ({ id }) =>
-          !state.history.left.includes(id) && !state.history.right.includes(id)
-      );
-      state.history.right.push(filteredTokens[0].id);
+    swapRight: (state, action: PayloadAction<TokenInterface>) => {
+      state.history.right.push(action.payload.id);
     },
-    swapLeft: (state) => {
-      const filteredTokens = state.list.filter(
-        ({ id }) =>
-          !state.history.left.includes(id) && !state.history.right.includes(id)
-      );
-      state.history.left.push(filteredTokens[0].id);
+    swapLeft: (state, action: PayloadAction<TokenInterface>) => {
+      state.history.left.push(action.payload.id);
     },
   },
   extraReducers: (builder) => {

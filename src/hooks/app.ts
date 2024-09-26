@@ -1,5 +1,9 @@
 import { useSelector } from "react-redux";
-import { isInitSelector, landingSelector } from "~/store/selectors/app";
+import {
+  isInitSelector,
+  landingSelector,
+  showVideoSelector,
+} from "~/store/selectors/app";
 
 export const useShowLanding = () => {
   return useSelector(landingSelector);
@@ -7,4 +11,8 @@ export const useShowLanding = () => {
 
 export const useIsInit = () => {
   return useSelector(isInitSelector);
+};
+
+export const useShowVideo = () => {
+  return useSelector(showVideoSelector);
 };
