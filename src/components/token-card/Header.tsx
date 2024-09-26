@@ -22,6 +22,7 @@ const Header = ({ token }: { token: TokenInterface }) => (
         </li>
       </ul>
       */}
+
       <ul className="flex w-full mt-8">
         {token.info.marketCap && (
           <li className="w-1/2">

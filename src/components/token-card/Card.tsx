@@ -6,56 +6,52 @@ import { TokenInterface } from "~/types/interfaces";
 import Header from "./Header";
 import Score from "./Score";
 import Swap from "./Swap";
+import { swapLeft, swapRight } from "~/services/tokens";
 
 type Props = {
   token: TokenInterface;
 };
 
 const TokenCard = ({ token }: Props) => {
-  const [gone, setGone] = useState(false); // Pour empêcher le retour du token après un swipe
+  const [gone, setGone] = useState(false); // To prevent the token from returning after a swipe
 
   const [{ x }, api] = useSpring(() => ({
-    x: 0, // Position initiale à 0
+    x: 0, // Initial position at 0
   }));
 
   const bind = useDrag(
-    ({ down, movement: [mx], velocity }) => {
-      // Si on a "swipé" avec une grande vélocité et qu'on n'est plus en train de "drag"
+    ({ down, movement: [mx], velocity, direction: [xDir], cancel }) => {
+      // If a more vertical than horizontal scroll is detected, cancel the drag
+      if (Math.abs(xDir) < 0.2 && Math.abs(mx) < 100) {
+        cancel();
+      }
+
+      // If we "swiped" with high velocity and are no longer dragging
       if (!down && velocity > 0.5) {
-        // Si le mouvement est vers la droite, on déclenche un événement spécifique
+        // Trigger a specific event if the movement is to the right
         if (mx > 0) {
-          handleSwipeRight();
+          swapRight(token);
         } else {
-          handleSwipeLeft();
+          swapLeft(token);
         }
 
-        // Après un swipe, on fait en sorte que la carte disparaisse
+        // After a swipe, ensure the card disappears
         setGone(true);
-        api.start({ x: mx > 0 ? 1000 : -1000 }); // Vers la droite ou gauche
+        api.start({ x: mx > 0 ? 1000 : -1000 }); // To the right or left
       } else {
-        // Si on n'a pas encore swipé, on suit le mouvement
+        // If we haven't swiped yet, follow the movement
         api.start({ x: down ? mx : 0 });
       }
     },
-    { axis: "x" } // On limite le swipe uniquement sur l'axe horizontal
+    { axis: "x", filterTaps: true, threshold: 10 } // Limit swipe only to the horizontal axis, with a threshold to prevent intercepting light taps
   );
-
-  const handleSwipeLeft = () => {
-    console.log("Swiped left");
-    // Ajouter l'événement spécifique pour un swipe à gauche
-  };
-
-  const handleSwipeRight = () => {
-    console.log("Swiped right");
-    // Ajouter l'événement spécifique pour un swipe à droite
-  };
 
   return (
     <animated.div
       {...bind()}
       style={{
-        x, // On utilise la position animée
-        display: gone ? "none" : "block", // On cache la carte après le swipe
+        x, // Use the animated position
+        display: gone ? "none" : "block", // Hide the card after swipe
       }}
     >
       <StyledTokenCard className="mt-4 flex flex-col overflow-hidden">
@@ -69,7 +65,7 @@ const TokenCard = ({ token }: Props) => {
 
 const StyledTokenCard = styled.div`
   background: #0c284a;
-  touch-action: none; /* Désactive le comportement par défaut du navigateur pour drag & drop */
+  touch-action: pan-y; /* Allows vertical scrolling */
 `;
 
 export default TokenCard;

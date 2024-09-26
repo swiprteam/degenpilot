@@ -35,7 +35,6 @@ function App() {
       <TokenList />
     </>
   );
-  return <TokenList />;
 }
 
 export default App;
