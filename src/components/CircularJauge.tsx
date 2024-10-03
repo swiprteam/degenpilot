@@ -61,19 +61,19 @@ const CircularGauge = ({
             textAnchor="middle"
             dominantBaseline="central"
             fill="white"
-            fontSize={radius * 0.3}
+            fontSize={radius * 0.6}
             fontWeight="600"
             fontFamily="Arial, Helvetica, sans-serif"
           >
             {score}
           </text>
           <text
-            x={center + radius / 2.5}
-            y={center - radius / 5}
+            x={center + radius / 3}
+            y={center + radius / 20}
             textAnchor="start"
             dominantBaseline="baseline"
             fill="white"
-            fontSize={radius * 0.2}
+            fontSize={radius * 0.25}
             fontWeight="400"
             fontFamily="Arial, Helvetica, sans-serif"
           >

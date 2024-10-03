@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Box, Button } from "~/utils/styled";
+import { Box } from "~/utils/styled";
 import CircularGauge from "../CircularJauge";
 import { TokenInterface } from "~/types/interfaces";
 import Detail from "./Detail";
@@ -61,28 +61,49 @@ const Score = ({ token }: { token: TokenInterface }) => {
       <Flipper isFlipped={isFlipped}>
         {/* Front side */}
         <FrontFace bordered>
-          <Button
+          <InfoButton
             className="absolute right-0 top-0 m-2 bg-blue-500 text-white z-20"
             onClick={handleFlip}
           >
-            +info
-          </Button>
+            <span>+INFO</span>
+          </InfoButton>
           <CircularGauge score={token.score.value} />
         </FrontFace>
 
         {/* Back side */}
         <BackFace bordered>
-          <Button
+          <InfoButton
             className="absolute right-0 top-0 m-2 bg-red-500 text-white"
             onClick={handleFlip}
           >
-            Retour
-          </Button>
+            <span>SCORE</span>
+          </InfoButton>
           <Detail />
         </BackFace>
       </Flipper>
     </FlipperContainer>
   );
 };
+
+const InfoButton = styled.button`
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 7px;
+  background-color: #0c2d5e;
+  padding: 5px;
+  display: block;
+  > * {
+    background: rgba(23, 61, 119, 0.7);
+    border-radius: 7px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: block;
+    padding: 12px 10px;
+  }
+`;
 
 export default Score;

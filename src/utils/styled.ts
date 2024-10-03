@@ -43,3 +43,19 @@ export const Square = styled.div`
     padding-top: 100%;
   }
 `;
+
+export const ColorButton = styled.button<{
+  success?: boolean;
+  cancel?: boolean;
+}>`
+  text-align: center;
+  font-size: 20px;
+  padding: 5px 20px;
+  color: #fff;
+  ${(props) =>
+    props.success &&
+    "background: linear-gradient(180deg, rgba(88, 197, 2, 0.55) 0%, rgba(50, 110, 3, 0.55) 100%);"}
+  ${(props) =>
+    props.cancel &&
+    "background: linear-gradient(180deg, rgba(237, 84, 84, 0.55) 0%, rgba(255, 0, 0, 0.55) 100%);"}
+`;

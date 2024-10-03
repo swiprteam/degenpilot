@@ -22,7 +22,7 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
   );
 
   const landing: boolean = await localforage.getItem("landing");
-  console.log("🚀 ~ initStore ~ landing:", landing);
+
   store.dispatch(setShowLanding(landing));
   store.dispatch(initHistory(localHistory));
   try {
@@ -38,7 +38,7 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
     if (!localTokens.length) throw new Error("No tokens on local");
     store.dispatch(setChains(localChains.map((n) => new Chain(n))));
     store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
-    store.dispatch(setWeb3Modal(setupWeb3modal(localChains)));
+    store.dispatch(setWeb3Modal(await setupWeb3modal(localChains)));
     store.dispatch(setIsInit(true));
   } catch (_) {
     Promise.all([
@@ -57,7 +57,7 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
 export const fetchChains = createAsyncThunk<ChainInterface[]>(
   "api/chains",
   async () => {
-    const config = setupWeb3modal(chains) as any;
+    const config = (await setupWeb3modal(chains)) as any;
     dispatch(setWeb3Modal(config));
     return chains;
   }

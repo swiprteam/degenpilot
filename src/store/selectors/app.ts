@@ -20,3 +20,10 @@ export const showVideoSelector = createSelector(
     return app.showVideo;
   }
 );
+
+export const showBuySelector = createSelector(
+  (state: IRootState) => state.app,
+  (app) => {
+    return app.showBuy;
+  }
+);

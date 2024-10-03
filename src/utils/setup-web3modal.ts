@@ -10,7 +10,10 @@ interface Web3ModalConfig {
     config: ReturnType<typeof defaultSolanaConfig>;
   };
 }
-export const setupWeb3modal = (chains: ChainInterface[]): Web3ModalConfig => {
+
+export const setupWeb3modal = async (
+  chains: ChainInterface[]
+): Promise<Web3ModalConfig> => {
   const projectId = WEB3MODAL_PROJECTid;
 
   const solanaChain = chains.find(
@@ -19,6 +22,7 @@ export const setupWeb3modal = (chains: ChainInterface[]): Web3ModalConfig => {
   if (!solanaChain) throw new Error("No Solana chain found");
 
   const solana = evmToSolanaChain(solanaChain);
+
   const solanaConfig = defaultSolanaConfig({
     projectId,
     metadata: {

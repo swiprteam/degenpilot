@@ -11,8 +11,8 @@ const TokenList = () => {
 
   return (
     <AppLayout>
-      <div className="mb-8">
-        <AuthLayout>
+      <AuthLayout>
+        <div className="mb-8 md:bg-secondary md:p-8">
           <Header />
           <ul>
             {tokens.length === 0 && <div>No tokens to see</div>}
@@ -29,8 +29,8 @@ const TokenList = () => {
               );
             })}
           </ul>
-        </AuthLayout>
-      </div>
+        </div>
+      </AuthLayout>
     </AppLayout>
   );
 };

@@ -4,12 +4,14 @@ export interface AppState {
   landing: boolean;
   isInit: boolean;
   showVideo: boolean;
+  showBuy: boolean;
 }
 
 const initialState: AppState = {
   landing: true,
   isInit: false,
   showVideo: false,
+  showBuy: false,
 };
 
 const appSlice = createSlice({
@@ -25,9 +27,13 @@ const appSlice = createSlice({
     setShowVideo: (state, action: PayloadAction<boolean>) => {
       state.showVideo = action.payload;
     },
+    setShowBuy: (state, action: PayloadAction<boolean>) => {
+      state.showBuy = action.payload;
+    },
   },
 });
 
-export const { setShowLanding, setIsInit, setShowVideo } = appSlice.actions;
+export const { setShowLanding, setIsInit, setShowVideo, setShowBuy } =
+  appSlice.actions;
 
 export const AppReducer = appSlice.reducer;
