@@ -1,6 +1,6 @@
 import { TokenInterface } from "~/types/interfaces";
 import BuyButtons from "./BuyButtons";
-import Buy from "./buy";
+import Buy from "./Buy";
 import { useShowBuy } from "~/hooks/app";
 
 const Swap = ({ token }: { token: TokenInterface }) => {

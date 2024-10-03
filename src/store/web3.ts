@@ -1,10 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { createWeb3Modal, defaultSolanaConfig } from "@web3modal/solana/react";
 import { ChainInterface } from "~/types/interfaces";
-import { setupWeb3modal } from "~/utils/setup-web3modal";
+import { Web3ModalConfig } from "~/utils/setup-web3modal";
 import { fetchChains } from "./api/api";
 
-type Web3ModalConfig = ReturnType<typeof setupWeb3modal>;
 type SolanaConfig = ReturnType<typeof defaultSolanaConfig>;
 type SolanaWeb3Modal = ReturnType<typeof createWeb3Modal>;
 

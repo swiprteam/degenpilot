@@ -4,7 +4,7 @@ import { evmToSolanaChain } from "./chains";
 
 const WEB3MODAL_PROJECTid = "9e836ab3f9a0ff2fc4411e331b3baba0";
 
-interface Web3ModalConfig {
+export interface Web3ModalConfig {
   solana: {
     instance: ReturnType<typeof createWeb3Modal>;
     config: ReturnType<typeof defaultSolanaConfig>;
