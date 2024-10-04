@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { TokenInterface } from "~/types/interfaces";
 
 const Icon = ({ type }: { type: "green" | "red" }) => (
   <div className="flex justify-center mb-4">
@@ -38,27 +38,21 @@ const Icon = ({ type }: { type: "green" | "red" }) => (
   </div>
 );
 
-const Detail = () => {
+const Detail = ({ token }: { token: TokenInterface }) => {
   return (
     <div className="bg-[#0f172a] rounded-lg p-4 max-w-lg mx-auto shadow-lg">
       <div className="grid grid-cols-2 gap-8">
         <div className="flex flex-col items-center">
           <Icon type="green" />
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
+          {token.score.details.pros.map((pro) => (
+            <p className="text-white text-center">{pro}</p>
+          ))}
         </div>
         <div className="flex flex-col items-center">
           <Icon type="red" />
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
-          <p className="text-white text-center">Lorem ipsum</p>
+          {token.score.details.cons.map((con) => (
+            <p className="text-white text-center">{con}</p>
+          ))}
         </div>
       </div>
 

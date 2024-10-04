@@ -82,7 +82,7 @@ const Score = ({ token }: { token: TokenInterface }) => {
           >
             <span>SCORE</span>
           </InfoButton>
-          <Detail />
+          <Detail token={token} />
         </BackFace>
       </Flipper>
     </FlipperContainer>
