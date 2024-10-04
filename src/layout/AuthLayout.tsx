@@ -9,7 +9,6 @@ const AuthLayoutContent = ({ children }: { children: ReactNode }) => {
 
   const { instance } = useWeb3Modal();
 
-  return children;
   if (!isConnected) {
     return (
       <AppLayout>

@@ -7,6 +7,7 @@ import { useWeb3Modal } from "~/hooks/web3";
 const Header = () => {
   const { address } = useWeb3ModalAccount();
   const { instance } = useWeb3Modal();
+
   return (
     <header className="overflow-hidden">
       <Box className="p-4 flex w-full ">

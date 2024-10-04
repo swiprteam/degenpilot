@@ -4,7 +4,6 @@ import { Box } from "~/utils/styled";
 import CircularGauge from "../CircularJauge";
 import { TokenInterface } from "~/types/interfaces";
 import Detail from "./Detail";
-import clsx from "clsx";
 
 // Styled components with Tailwind classes
 const FlipperContainer = styled.div`
