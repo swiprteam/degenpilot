@@ -26,7 +26,7 @@ const Buy = ({ token }: { token: TokenInterface }) => {
 
   const [selected, setSelected] = useState("custom");
   const [value, setValue] = useState<string>("");
-  const [slippage, setSlippage] = useState(50);
+  const [slippage, setSlippage] = useState(100);
   const [loading, setLoading] = useState(false);
 
   const buyToken = useCallback(async () => {
