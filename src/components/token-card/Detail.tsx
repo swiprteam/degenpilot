@@ -44,23 +44,28 @@ const Detail = ({ token }: { token: TokenInterface }) => {
       <div className="grid grid-cols-2 gap-8">
         <div className="flex flex-col items-center">
           <Icon type="green" />
-          {token.score.details.pros.map((pro) => (
-            <p className="text-white text-center">{pro}</p>
-          ))}
+          <div className="text-left">
+            {token.score.details.pros.map((pro) => (
+              <p className="text-white text-left my-1">- {pro}</p>
+            ))}
+          </div>
         </div>
         <div className="flex flex-col items-center">
           <Icon type="red" />
-          {token.score.details.cons.map((con) => (
-            <p className="text-white text-center">{con}</p>
-          ))}
+          <div className="text-left">
+            {token.score.details.cons.map((con) => (
+              <p className="text-white text-left my-1">- {con}</p>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Progress bar */}
+      {/* Progress bar 
       <div className="relative mt-6">
         <div className="w-full h-1 bg-blue-500 rounded-full"></div>
         <div className="w-[80%] h-1 bg-green-400 absolute top-0 left-0 rounded-full"></div>
       </div>
+      */}
 
       {/* Footer with the update date */}
       <div className="text-gray-300 text-sm mt-2 text-center">
