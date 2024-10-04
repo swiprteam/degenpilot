@@ -7,13 +7,13 @@ import Graph from "@/assets/graph.png";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const Header = ({ token }: { token: TokenInterface }) => (
-  <Box bordered className="name w-full flex p-4">
+  <Box bordered className="name w-full flex p-4 relative">
     <div className="flex flex-col justify-center">
       <TokenImage token={token} />
     </div>
     <div className="ml-6 flex flex-wrap">
-      <h1 className="text-2xl items-center flex w-full pr-6">
-        {token.info.name}
+      <h1 className="text-2xl items-center flex w-full pr-6 uppercase">
+        {token.info.symbol}
         <div>
           <img src={solana} alt="solana" className="w-5 ml-2" />
         </div>

@@ -9,6 +9,7 @@ const AuthLayoutContent = ({ children }: { children: ReactNode }) => {
 
   const { instance } = useWeb3Modal();
 
+  return children;
   if (!isConnected) {
     return (
       <AppLayout>
@@ -21,7 +22,7 @@ const AuthLayoutContent = ({ children }: { children: ReactNode }) => {
               Connect your wallet to Swipr below
             </SubTitle>
             <Button
-              className="w-full flex justify-center items-center"
+              className="w-full flex justify-center items-center text-white"
               onClick={() => instance.open()}
             >
               Connect wallet{" "}

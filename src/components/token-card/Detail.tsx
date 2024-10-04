@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 const Icon = ({ type }: { type: "green" | "red" }) => (
   <div className="flex justify-center mb-4">
     {type === "green" ? (

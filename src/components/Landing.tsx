@@ -11,9 +11,9 @@ const Landing = () => {
       <StyledLanding>
         <div className="flex flex-col">
           <div className="content justify-center flex flex-col">
-            <h1 className="text-2xl text-center py-16 w-full">
+            <h1 className="text-2xl text-center font-bold py-16 w-full text-white">
               Study.Swipe.
-              <span className="relative">
+              <span className="relative text-[#68B790]">
                 Score!
                 <img
                   src={line}
@@ -33,7 +33,7 @@ const Landing = () => {
               dispatch(setShowLanding(false));
             }}
           >
-            <span className="flex justify-center">
+            <span className="flex justify-center text-white">
               Start swapping
               <FaArrowRight className="ml-2 mt-1" />
             </span>

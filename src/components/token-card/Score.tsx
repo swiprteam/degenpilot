@@ -4,6 +4,7 @@ import { Box } from "~/utils/styled";
 import CircularGauge from "../CircularJauge";
 import { TokenInterface } from "~/types/interfaces";
 import Detail from "./Detail";
+import clsx from "clsx";
 
 // Styled components with Tailwind classes
 const FlipperContainer = styled.div`
@@ -24,6 +25,8 @@ const Flipper = styled.div<{ isFlipped: boolean }>`
 `;
 
 const FrontFace = styled(Box)`
+  z-index: 1;
+  background: #072045;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -55,6 +58,7 @@ const Score = ({ token }: { token: TokenInterface }) => {
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
+  const score = token.score.value;
 
   return (
     <FlipperContainer className="mt-8">
@@ -67,11 +71,11 @@ const Score = ({ token }: { token: TokenInterface }) => {
           >
             <span>+INFO</span>
           </InfoButton>
-          <CircularGauge score={token.score.value} />
+          <CircularGauge score={score} />
         </FrontFace>
 
         {/* Back side */}
-        <BackFace bordered>
+        <BackFace className="back" bordered>
           <InfoButton
             className="absolute right-0 top-0 m-2 bg-red-500 text-white"
             onClick={handleFlip}

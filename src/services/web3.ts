@@ -70,7 +70,6 @@ export const sendBuyTransaction = async ({
       }),
     })
   ).json();
-  console.log("🚀 ~ swapTransaction:", swapTransaction);
   const swapTransactionBuf = Buffer.from(swapTransaction, "base64");
 
   const transaction = VersionedTransaction.deserialize(swapTransactionBuf);
@@ -94,19 +93,16 @@ export const sendBuyTransaction = async ({
   });
   message.instructions.push(transferInstruction);
   transaction.message = message.compileToV0Message(addressLookupTableAccounts);
-  console.log("🚀 ~ transaction:", transaction);
 
-  await wallet?.signTransaction(transaction);
-  const latestBlockHash = await connection.getLatestBlockhash();
-
-  const rawTransaction = transaction.serialize();
-  const txid = await connection.sendRawTransaction(rawTransaction, {
-    skipPreflight: true,
-    maxRetries: 2,
-  });
+  const signTrans = await wallet.signTransaction(transaction);
+  const txid = await connection.sendRawTransaction(signTrans.serialize());
   await connection.confirmTransaction({
-    blockhash: latestBlockHash.blockhash,
-    lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
+    blockhash: await connection
+      .getLatestBlockhash()
+      .then((res) => res.blockhash),
+    lastValidBlockHeight: await connection
+      .getLatestBlockhash()
+      .then((res) => res.lastValidBlockHeight),
     signature: txid,
   });
   console.log(`https://solscan.io/tx/${txid}`);

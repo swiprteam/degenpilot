@@ -45,7 +45,7 @@ const Buy = ({ token }: { token: TokenInterface }) => {
     return loading || isNaN(numberValue) || numberValue <= 0;
   }, [value, loading]);
   return (
-    <div>
+    <div className="mt-8">
       <Box className="p-4">
         <div className="flex flex-col">
           <ul className="flex justify-center gap-1 max-w-full w-full">
