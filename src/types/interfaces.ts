@@ -36,4 +36,7 @@ export interface TokenInterface {
   info: TokenInfo;
   links: TokenLinks;
   score: Score;
+  meta: {
+    updatedAt: Date;
+  };
 }

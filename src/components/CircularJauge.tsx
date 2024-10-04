@@ -53,7 +53,7 @@ const CircularGauge = ({
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="relative">
-        <svg width="320" height="320" viewBox={`0 0 ${svgSize} ${svgSize}`}>
+        <svg className="w-[200px]" viewBox={`0 0 ${svgSize} ${svgSize}`}>
           <g id="bars">{createBars()}</g>
           <text
             x={center}
@@ -80,7 +80,7 @@ const CircularGauge = ({
             %
           </text>
         </svg>
-        <div className="text-center text-4xl -mt-8">
+        <div className="text-center text-2xl -mt-6">
           {score >= 21 && score < 31 && (
             <span className="text-[#ff7500]">Mediocre</span>
           )}

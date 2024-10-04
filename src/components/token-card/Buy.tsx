@@ -45,8 +45,8 @@ const Buy = ({ token }: { token: TokenInterface }) => {
     return loading || isNaN(numberValue) || numberValue <= 0;
   }, [value, loading]);
   return (
-    <div className="mt-8">
-      <Box className="p-4">
+    <div className="mt-4 md:mt-8">
+      <Box className="p-4" bordered>
         <div className="flex flex-col">
           <ul className="flex justify-center gap-1 max-w-full w-full">
             {values.map(({ key, value, label }) => (
@@ -133,7 +133,7 @@ const SelectButton = styled.li<{ active: boolean }>`
   white-space: nowrap;
   font-size: 10px;
   line-height: 0;
-  height: 26px;
+  height: 20px;
   width: 20%;
   text-align: center;
   font-weight: 600;
@@ -141,10 +141,10 @@ const SelectButton = styled.li<{ active: boolean }>`
 `;
 
 const Input = styled.input`
-  height: 35px;
+  height: 28px;
   border-radius: 10;
   background: linear-gradient(180deg, #051e44 0%, #000205 79.5%, #15386d 100%);
-  font-size: 24px;
+  font-size: 22px;
   width: 100%;
   margin-top: 10px;
 `;

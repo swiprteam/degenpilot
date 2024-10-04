@@ -12,7 +12,7 @@ const Header = ({ token }: { token: TokenInterface }) => (
       <TokenImage token={token} />
     </div>
     <div className="ml-6 flex flex-wrap">
-      <h1 className="text-2xl items-center flex w-full pr-6 uppercase">
+      <h1 className="text-xl sm:text-2xl items-center flex w-full pr-6 uppercase">
         {token.info.symbol}
         <div>
           <img src={solana} alt="solana" className="w-5 ml-2" />
@@ -32,11 +32,11 @@ const Header = ({ token }: { token: TokenInterface }) => (
         </ul>
       }
 
-      <ul className="flex w-full mt-8">
+      <ul className="flex w-full mt-4 sm:mt-8">
         {token.info.marketCap && (
           <li className="w-1/2">
             <span className="block text-xs">MCap</span>
-            <span className="block text-lg font-black">
+            <span className="block text-base sm:text-lg font-black">
               {token.info.marketCap.toLocaleString("en-US", {
                 compactDisplay: "short",
                 notation: "compact",
@@ -49,10 +49,13 @@ const Header = ({ token }: { token: TokenInterface }) => (
         <li className="w-1/2">
           <span className="block text-xs">24H</span>
           <span
-            className={clsx("flex items-center text-lg font-black", {
-              "text-red-500": token.info.h24Change < 0,
-              "text-green-500": token.info.h24Change >= 0,
-            })}
+            className={clsx(
+              "flex items-center text-base sm:text-lg font-black",
+              {
+                "text-red-500": token.info.h24Change < 0,
+                "text-green-500": token.info.h24Change >= 0,
+              }
+            )}
           >
             {token.info.h24Change}%{" "}
             {token.info.h24Change >= 0 ? (

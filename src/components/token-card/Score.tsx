@@ -20,7 +20,7 @@ const Flipper = styled.div<{ isFlipped: boolean }>`
     props.isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"};
   position: relative;
   width: 100%;
-  height: 360px;
+  height: 250px;
 `;
 
 const FrontFace = styled(Box)`
@@ -60,7 +60,7 @@ const Score = ({ token }: { token: TokenInterface }) => {
   const score = token.score.value;
 
   return (
-    <FlipperContainer className="mt-8">
+    <FlipperContainer className="mt-4 sm:mt-8">
       <Flipper isFlipped={isFlipped}>
         {/* Front side */}
         <FrontFace bordered>

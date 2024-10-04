@@ -4,7 +4,7 @@ import styled from "styled-components";
 const TokenImage = ({ token }: { token: TokenInterface }) => {
   return (
     <Frame className="overflow-hidden">
-      <Square className="block relative w-20">
+      <Square className="block relative w-16 sm:w-20">
         <Image src={token.info.imageUrl} alt={token.info.name} />
       </Square>
     </Frame>

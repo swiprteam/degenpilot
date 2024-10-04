@@ -48,6 +48,6 @@ export const chains: ChainInterface[] = [
     explorerUrl: "https://solscan.io",
     name: "Solana",
     rpcUrl:
-      "https://mainnet.helius-rpc.com/?api-key=876dbf90-0423-4df6-8629-c231d78242c0",
+      "https://staked.helius-rpc.com/?api-key=72177f2e-64ae-4544-8d1d-81b70ca5d0c6",
   }),
 ];

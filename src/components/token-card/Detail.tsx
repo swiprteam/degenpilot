@@ -1,5 +1,5 @@
 import { TokenInterface } from "~/types/interfaces";
-
+import dayjs from "dayjs";
 const Icon = ({ type }: { type: "green" | "red" }) => (
   <div className="flex justify-center mb-4">
     {type === "green" ? (
@@ -40,19 +40,19 @@ const Icon = ({ type }: { type: "green" | "red" }) => (
 
 const Detail = ({ token }: { token: TokenInterface }) => {
   return (
-    <div className="bg-[#0f172a] rounded-lg p-4 max-w-lg mx-auto shadow-lg">
+    <div className="rounded-lg p-2 max-w-lg mx-auto shadow-lg">
       <div className="grid grid-cols-2 gap-8">
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-start">
           <Icon type="green" />
-          <div className="text-left">
+          <div className="text-left text-xs">
             {token.score.details.pros.map((pro) => (
               <p className="text-white text-left my-1">- {pro}</p>
             ))}
           </div>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-start">
           <Icon type="red" />
-          <div className="text-left">
+          <div className="text-left text-xs">
             {token.score.details.cons.map((con) => (
               <p className="text-white text-left my-1">- {con}</p>
             ))}
@@ -69,7 +69,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
 
       {/* Footer with the update date */}
       <div className="text-gray-300 text-sm mt-2 text-center">
-        Updated 28/09
+        Updated at: {dayjs(token.meta.updatedAt).format("YYYY/MM/DD HH:mm:ss")}
       </div>
     </div>
   );

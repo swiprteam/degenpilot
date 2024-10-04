@@ -10,6 +10,9 @@ export class Token
   info: TokenInfo;
   links: TokenLinks;
   score: Score;
+  meta: {
+    updatedAt: Date;
+  };
 
   static byId: { [id: string]: TokenInterface } = {};
   constructor(token: TokenInterface) {
@@ -19,6 +22,7 @@ export class Token
     this.info = token.info;
     this.links = token.links;
     this.score = token.score;
+    this.meta = token.meta;
 
     Token.byId[this.id] = this;
   }
