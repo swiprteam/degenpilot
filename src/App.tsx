@@ -36,7 +36,7 @@ function App() {
           <source src={buyVideo} type="video/mp4" />
         </video>
       )}
-      <div className="flex">
+      <div className="flex max-h-screen overflow-y-hidden">
         <div className="w-full bg-darkBlue justify-center items-center flex">
           <div className="max-w-md">
             <TokenList />

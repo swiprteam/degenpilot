@@ -33,6 +33,7 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
     const localTokens: TokenInterface[] = JSON.parse(
       (await localforage.getItem("tokens")) ?? "[]"
     );
+    console.log("🚀 ~ initStore ~ localTokens:", localTokens);
 
     if (!localChains.length) throw Error("No networks on local");
     if (!localTokens.length) throw new Error("No tokens on local");
@@ -70,6 +71,7 @@ export const fetchTokens = createAsyncThunk("api/tokens", async () => {
     );
 
     const tokens = data.map((token) => new Token(token));
+    console.log("🚀 ~ fetchTokens ~ tokens:", tokens);
 
     return tokens.map((token) => token.toObject()) as TokenInterface[];
   } catch (e) {
