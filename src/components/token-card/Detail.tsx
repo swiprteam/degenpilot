@@ -69,7 +69,8 @@ const Detail = ({ token }: { token: TokenInterface }) => {
 
       {/* Footer with the update date */}
       <div className="text-gray-300 text-sm mt-2 text-center">
-        Updated at: {dayjs(token.meta.updatedAt).format("YYYY/MM/DD HH:mm:ss")}
+        Updated at:{" "}
+        {dayjs(token?.meta?.updatedAt).format("YYYY/MM/DD HH:mm:ss")}
       </div>
     </div>
   );
