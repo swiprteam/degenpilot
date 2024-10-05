@@ -41,7 +41,7 @@ export const sendBuyTransaction = async ({
   output,
 }: SendBuyTransactionProps) => {
   const SOL_MINT = "So11111111111111111111111111111111111111112";
-  const FEES_WALLET = "Dx1jYRfegRhGGUHrANcBgdnnmWE3KDzyYkQohujc6Aoe";
+  const FEES_WALLET = "9YcMeALSJ112pGUDUmQySPRH4Z3RHsA7EpcSjDBJ5SGX";
 
   const transferAmount = value * fees * 1e9; // Compute fees
   const transferInstruction = SystemProgram.transfer({

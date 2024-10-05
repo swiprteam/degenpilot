@@ -9,7 +9,7 @@ import { TokenInterface } from "~/types/interfaces";
 import { Box, ColorButton } from "~/utils/styled";
 import { RotatingLines } from "react-loader-spinner";
 import clsx from "clsx";
-const FEES = 0.02; // 2% fee
+const FEES = 0.01; // 1% fee
 
 const Buy = ({ token }: { token: TokenInterface }) => {
   const { connection, walletProvider } = useWeb3ModalProvider();
