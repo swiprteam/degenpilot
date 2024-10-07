@@ -12,7 +12,7 @@ const Header = ({ token }: { token: TokenInterface }) => (
       <TokenImage token={token} />
     </div>
     <div className="ml-6 flex flex-wrap">
-      <h1 className="text-xl sm:text-2xl items-center flex w-full pr-6 uppercase">
+      <h1 className="text-xl sm:text-2xl items-center flex w-full pr-6">
         {token.info.symbol}
         <div>
           <img src={solana} alt="solana" className="w-5 ml-2" />
