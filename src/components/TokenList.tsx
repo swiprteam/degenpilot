@@ -10,12 +10,13 @@ import { getSelectedToken } from "~/services/tokens";
 const TokenList = () => {
     const tokens = useTokens();
     const useSelectedToken = getSelectedToken();
+
     return (
         <AppLayout>
             <AuthLayout>
-                <div className="mb-8 md:bg-secondary md:p-8">
+                <div className="mb-8 md:p-8">
                     <Header />
-                    <ul>
+                    <div>
                         {tokens.length === 0 && <div>No tokens to see</div>}
                         {tokens.map((token) => {
                             const selectedToken = getSelectedToken();
@@ -40,7 +41,7 @@ const TokenList = () => {
                                 </div>
                             );
                         })}
-                    </ul>
+                    </div>
                 </div>
             </AuthLayout>
         </AppLayout>

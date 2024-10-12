@@ -1,17 +1,18 @@
 import styled from "styled-components";
-export const Box = styled.div<{ bordered?: boolean }>`
-    border-radius: 10px;
-    border: ${(props: any) =>
-        props.bordered ? "3px solid #003b71" : "1px solid #003b71"};
-    background: #072045;
-    box-shadow: 0px 15px 15px 0px rgba(0, 167, 220, 0.05);
-    backdrop-filter: blur(7px);
-`;
+export const Box = styled.div<{ bordered?: boolean }>``;
 
 export const AddressButton = styled.button`
+    width: auto;
     border-radius: 10.625px;
-    border: 1px solid #103368;
-    background: linear-gradient(180deg, #0f2950 0%, rgba(34, 93, 182, 0) 100%);
+    background: #1d1d1d;
+    border: 1px solid #1d1d1d;
+    margin: 0 auto 0 auto;
+    display: flex;
+    align-items: center;
+    img {
+        margin-right: 20px;
+    }
+    color: #c6c6c6;
 `;
 
 export const AppLayout = styled.div`

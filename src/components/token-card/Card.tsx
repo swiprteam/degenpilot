@@ -17,7 +17,7 @@ type Props = {
 const TokenCard = ({ token }: Props) => {
     return (
         <StyledTokenCard className="mt-4 flex flex-col overflow-hidden">
-            <Header token={token} />
+            {/* <Header token={token} /> */}
             <Score token={token} />
             <Swap token={token} />
         </StyledTokenCard>
@@ -26,6 +26,9 @@ const TokenCard = ({ token }: Props) => {
 
 const StyledTokenCard = styled.div`
     touch-action: pan-y; /* Allows vertical scrolling */
+    background: #282828;
+    border-radius: 20px;
+    padding: 20px;
 `;
 
 export default TokenCard;

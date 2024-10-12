@@ -19,87 +19,53 @@ const refetchInterval = (fetchingFunction: CallableFunction, timer: number) => {
 };
 
 export const initStore = async (store: EnhancedStore<IRootState>) => {
-<<<<<<< HEAD
-  const localHistory: TokenHistory = JSON.parse(
-    (await getItem(`buy_list_${CACHE_VERSION}`)) ?? `{"left": [],"right": []}`
-  );
-
-  const landing: boolean = await getItem("landing");
-
-  store.dispatch(setShowLanding(landing));
-  store.dispatch(initHistory(localHistory));
-
-  try {
-    const localChains: ChainInterface[] = JSON.parse(
-      (await getItem(`chains_${CACHE_VERSION}`)) ?? "[]"
-    );
-
-    const localTokens: TokenInterface[] = JSON.parse(
-      (await getItem(`tokens_${CACHE_VERSION}`)) ?? "[]"
-    );
-
-    const selectedToken: string =
-      (await getItem("selected_token")) ?? localTokens[0].id;
-
-    if (!localChains.length) throw Error("No networks on local");
-    if (!localTokens.length) throw new Error("No tokens on local");
-
-    store.dispatch(setChains(localChains.map((n) => new Chain(n))));
-    store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
-    store.dispatch(select(selectedToken));
-    store.dispatch(setWeb3Modal(await setupWeb3modal(localChains)));
-    store.dispatch(setIsInit(true));
-  } catch (_) {
-    Promise.all([
-      store.dispatch(setShowLanding(true)),
-      store.dispatch(fetchChains() as any).unwrap(),
-      store
-        .dispatch(fetchTokens() as any)
-        .unwrap()
-        .then(() => {
-          store.dispatch(select(store.getState().tokens.list[0].id));
-        }),
-      store.dispatch(setIsInit(true)),
-    ]);
-  }
-=======
     const localHistory: TokenHistory = JSON.parse(
-        (await localforage.getItem(`history_${CACHE_VERSION}`)) ??
+        (await getItem(`buy_list_${CACHE_VERSION}`)) ??
             `{"left": [],"right": []}`
     );
 
-    const landing: boolean = await localforage.getItem("landing");
+    const landing: boolean = await getItem("landing");
 
     store.dispatch(setShowLanding(landing));
     store.dispatch(initHistory(localHistory));
+
     try {
         const localChains: ChainInterface[] = JSON.parse(
-            (await localforage.getItem(`chains_${CACHE_VERSION}`)) ?? "[]"
+            (await getItem(`chains_${CACHE_VERSION}`)) ?? "[]"
         );
->>>>>>> 811f756 (start make up)
 
         const localTokens: TokenInterface[] = JSON.parse(
-            (await localforage.getItem(`tokens_${CACHE_VERSION}`)) ?? "[]"
+            (await getItem(`tokens_${CACHE_VERSION}`)) ?? "[]"
         );
 
-        if (!localChains.length) throw new Error("No networks on local");
+        const selectedToken: string =
+            (await getItem("selected_token")) ?? localTokens[0].id;
+
+        if (!localChains.length) throw Error("No networks on local");
         if (!localTokens.length) throw new Error("No tokens on local");
+
         store.dispatch(setChains(localChains.map((n) => new Chain(n))));
         store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
+        store.dispatch(select(selectedToken));
         store.dispatch(setWeb3Modal(await setupWeb3modal(localChains)));
         store.dispatch(setIsInit(true));
     } catch (_) {
         Promise.all([
             store.dispatch(setShowLanding(true)),
             store.dispatch(fetchChains() as any).unwrap(),
-            store.dispatch(fetchTokens() as any).unwrap(),
+            store
+                .dispatch(fetchTokens() as any)
+                .unwrap()
+                .then(() => {
+                    store.dispatch(select(store.getState().tokens.list[0].id));
+                }),
             store.dispatch(setIsInit(true)),
         ]);
     }
 
     refetchInterval(() => {
         store.dispatch(fetchTokens() as any);
-    }, 1000 * 60 * 5); // 5 minutes
+    }, 1000 * 60 * 5); // 1 minute
 };
 
 export const fetchChains = createAsyncThunk<ChainInterface[]>(
@@ -117,27 +83,16 @@ export const fetchTokens = createAsyncThunk("api/tokens", async () => {
             "https://swipr-api-d30d3b6ad1d2.herokuapp.com/tokens"
         );
 
-<<<<<<< HEAD
-    return data.map((token, _index) => {
-      return new Token({
-        ...token,
-        index: _index,
-      });
-    });
+        return data.map((token, _index) => {
+            return new Token({
+                ...token,
+                index: _index,
+            });
+        });
 
-    //return tokens.map((token) => token.toObject()) as TokenInterface[];
-  } catch (e) {
-    console.error(e);
-  }
-  return [];
-=======
-        const tokens = data.map((token) => new Token(token));
-        console.log("🚀 ~ fetchTokens ~ tokens:", tokens);
-
-        return tokens.map((token) => token.toObject()) as TokenInterface[];
+        //return tokens.map((token) => token.toObject()) as TokenInterface[];
     } catch (e) {
         console.error(e);
     }
     return [];
->>>>>>> 811f756 (start make up)
 });

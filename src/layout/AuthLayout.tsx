@@ -8,7 +8,6 @@ import Logo from "@/components/Logo";
 
 const AuthLayoutContent = ({ children }: { children: ReactNode }) => {
     const { isConnected } = useWeb3ModalAccount();
-
     const { instance } = useWeb3Modal();
 
     if (!isConnected) {
