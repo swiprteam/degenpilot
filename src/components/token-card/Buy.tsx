@@ -87,11 +87,10 @@ const Buy = ({ token }: { token: TokenInterface }) => {
             setLoading(true);
             try {
               await buyToken();
-              swapRight(token);
+              swapRight();
               setLoading(false);
               toast.success("Transaction sent");
             } catch (e) {
-              console.log("🚀 ~ onClick={ ~ e:", e);
               setLoading(false);
               toast.error("Transaction failed");
             }

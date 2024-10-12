@@ -7,10 +7,12 @@ export type TokenHistory = {
   left: string[];
   right: string[];
 };
+
 export interface TokensState {
   loading: {
     tokens: boolean;
   };
+  selected: string;
   list: TokenInterface[];
   history: TokenHistory;
 }
@@ -20,6 +22,7 @@ const initialState: TokensState = {
     tokens: true,
   },
   list: [],
+  selected: null,
   history: {
     left: [],
     right: [],
@@ -39,11 +42,17 @@ const tokensSlice = createSlice({
       state.list = action.payload;
       state.loading.tokens = false;
     },
-    swapRight: (state, action: PayloadAction<TokenInterface>) => {
-      state.history.right.push(action.payload.id);
+    swapRight: (state) => {
+      state.history.right.push(state.selected);
     },
-    swapLeft: (state, action: PayloadAction<TokenInterface>) => {
-      state.history.left.push(action.payload.id);
+    swapLeft: (state) => {
+      state.history.left.push(state.selected);
+    },
+    select: (state, action: PayloadAction<string>) => {
+      state.selected = action.payload;
+    },
+    selectFirstToken: (state) => {
+      state.selected = state.list[0].id;
     },
   },
   extraReducers: (builder) => {
@@ -58,7 +67,13 @@ const tokensSlice = createSlice({
   },
 });
 
-export const { setTokens, swapLeft, swapRight, initHistory } =
-  tokensSlice.actions;
+export const {
+  setTokens,
+  swapLeft,
+  swapRight,
+  initHistory,
+  select,
+  selectFirstToken,
+} = tokensSlice.actions;
 
 export const TokensReducer = tokensSlice.reducer;
