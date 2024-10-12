@@ -1,5 +1,4 @@
 import { Chain } from "@web3modal/scaffold-utils/solana";
-import { solana } from "@web3modal/solana/chains";
 
 import { ChainInterface } from "~/types/interfaces";
 

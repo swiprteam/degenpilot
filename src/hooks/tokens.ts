@@ -1,18 +1,15 @@
 import { useSelector } from "react-redux";
 
-import { IRootState } from "~/store";
+import {
+  selectedTokenSelector,
+  tokensSelector,
+} from "~/store/selectors/tokens";
 import { TokenInterface } from "~/types/interfaces";
 
 export const useTokens = (): TokenInterface[] => {
-  return useSelector((state: IRootState) => state.tokens.list);
+  return useSelector(tokensSelector);
 };
 
-export const useSwappableTokens = (): TokenInterface[] => {
-  return useSelector((state: IRootState) => {
-    return state.tokens.list.filter(
-      (token) =>
-        !state.tokens.history.left.includes(token.id) &&
-        !state.tokens.history.right.includes(token.id)
-    );
-  });
+export const useSelectedToken = (): TokenInterface => {
+  return useSelector(selectedTokenSelector);
 };

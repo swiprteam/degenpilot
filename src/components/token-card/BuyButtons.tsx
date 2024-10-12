@@ -1,17 +1,18 @@
 import styled from "styled-components";
 import trash from "@/assets/trash.png";
 import buy from "@/assets/buy.png";
-import { swapLeft } from "~/services/tokens";
+
 import { TokenInterface } from "~/types/interfaces";
 import { Box } from "~/utils/styled";
 import { openBuyMenu } from "~/services/app";
+import { swapLeft } from "~/services/tokens";
 
-const BuyButtons = ({ token }: { token: TokenInterface }) => (
+const BuyButtons = () => (
   <Box bordered className="w-full mt-4 sm:mt-8">
     <ul className="flex w-full justify-center gap-8 px-12 py-4 px-16 sm:py-8">
       <li className="w-1/2">
         <ButtonBox>
-          <StyledButton onClick={() => swapLeft(token)}>
+          <StyledButton onClick={() => swapLeft()}>
             <img src={trash} alt="trash" />
           </StyledButton>
         </ButtonBox>

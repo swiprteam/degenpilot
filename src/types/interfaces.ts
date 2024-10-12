@@ -39,4 +39,5 @@ export interface TokenInterface {
   meta: {
     updatedAt: Date;
   };
+  index: number;
 }

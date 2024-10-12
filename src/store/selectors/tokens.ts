@@ -9,3 +9,10 @@ export const tokensSelector = createSelector(
     return tokens.list.map((n) => new Token(n));
   }
 );
+
+export const selectedTokenSelector = createSelector(
+  (state: IRootState) => state.tokens,
+  (tokens) => {
+    return Token.byId[tokens.selected];
+  }
+);
