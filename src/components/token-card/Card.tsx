@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 import { TokenInterface } from "~/types/interfaces";
-import Header from "./Header";
 import Score from "./Score";
 import Swap from "./Swap";
+import Buy from "./Buy";
 
 type Props = {
     token: TokenInterface;
@@ -11,10 +11,13 @@ type Props = {
 
 const TokenCard = ({ token }: Props) => {
     return (
-        <StyledTokenCard className="mt-4 flex flex-col overflow-hidden">
-            <Score token={token} />
-            {/* <Swap token={token} /> */}
-        </StyledTokenCard>
+        <>
+            <StyledTokenCard className="mt-4 flex flex-col overflow-hidden">
+                <Score token={token} />
+                {/* <Swap token={token} /> */}
+            </StyledTokenCard>
+            <Buy token={token} />
+        </>
     );
 };
 
