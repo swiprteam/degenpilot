@@ -64,7 +64,7 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
 
   refetchInterval(() => {
     store.dispatch(fetchTokens() as any);
-  }, 1000 * 60 * 5); // 1 minute
+  }, 1000 * 60 * 1); // 1 minute
 };
 
 export const fetchChains = createAsyncThunk<ChainInterface[]>(
