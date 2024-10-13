@@ -18,7 +18,7 @@ const Buy = ({ token }: { token: TokenInterface }) => {
             { key: "0.1", value: 0.1, label: "0.1 SOL" },
             { key: "1", value: 1, label: "1 SOL" },
             { key: "10", value: 10, label: "10 SOL" },
-            { key: "100", value: 100, label: "50 SOL" },
+            { key: "100", value: 50, label: "50 SOL" },
         ],
         []
     );
@@ -61,8 +61,9 @@ const Buy = ({ token }: { token: TokenInterface }) => {
                         ))}
                     </ul>
 
-                    <div className="flex mt-4">
+                    <div className="flex mt-4 wrapBuy">
                         <Input
+                            className="inputBuy"
                             name="value"
                             placeholder="0.00"
                             value={value}
@@ -89,8 +90,7 @@ const Buy = ({ token }: { token: TokenInterface }) => {
                                     toast.error("Transaction failed");
                                 }
                             }}
-                            success
-                            className="w-full bg-success">
+                            className="buttonBuy">
                             Buy
                         </ColorButton>
                     </div>
@@ -125,21 +125,15 @@ const SelectButton = styled.li<{ active: boolean }>`
     font-size: 14px;
     text-align: center;
     font-weight: 600;
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover {
+        background: #3a3a3a;
+        border-color: #68b790;
+    }
 `;
 
-const Input = styled.input`
-    height: 28px;
-    border-radius: 10;
-    background: linear-gradient(
-        180deg,
-        #051e44 0%,
-        #000205 79.5%,
-        #15386d 100%
-    );
-    font-size: 22px;
-    width: 100%;
-    margin-top: 10px;
-`;
+const Input = styled.input``;
 
 const Mask = styled.div`
     position: fixed;

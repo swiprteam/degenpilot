@@ -107,6 +107,7 @@ const InfoButton = styled.button`
     position: absolute;
     bottom: 0;
     right: -10px;
+    transition: all 0.3s ease;
     &:hover {
         background: linear-gradient(145deg, #3b3b3b, #474747);
         > * {
@@ -125,6 +126,7 @@ const InfoButton = styled.button`
         transform: rotate(45deg);
     }
     > * {
+        transition: all 0.3s ease;
         color: #68b790;
         font-family: "Fira Code", sans-serif;
         font-size: 22px;
