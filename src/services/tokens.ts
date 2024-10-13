@@ -24,8 +24,17 @@ export const next = () => {
 
   const nextToken = store.list[Token.byId[store.selected].index + 1];
 
-  if (!nextToken) dispatch(select(null));
+  if (!nextToken) dispatch(select(store.list[0].id));
   else dispatch(select(nextToken.id));
+};
+
+export const prev = () => {
+  const store = getTokensStore();
+
+  const prevToken = store.list[Token.byId[store.selected].index - 1];
+
+  if (!prevToken) dispatch(select(store.list[0].id));
+  else dispatch(select(prevToken.id));
 };
 
 export const swapRight = () => {
