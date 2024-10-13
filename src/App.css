@@ -244,6 +244,13 @@
     color: #08512d;
     border-radius: 20px;
     padding: 5px 20px;
+    transition: all 0.3s;
+    &:disabled {
+        border: 2px solid #656565;
+        background: #3a3a3a;
+        color: #656565;
+        cursor: not-allowed;
+    }
 }
 .wrapBuy {
     justify-content: space-between;
