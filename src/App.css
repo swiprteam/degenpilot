@@ -189,3 +189,51 @@
     height: 50px;
     aspect-ratio: 1;
 }
+.tokenName {
+    text-align: center;
+    font-family: "Fira Code", sans-serif;
+    font-size: 26px;
+    margin-top: 20px;
+    color: #c6c6c6;
+    font-weight: 600;
+}
+.dataToken {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: #c6c6c6;
+    font-weight: bold;
+
+    li {
+        width: 50%;
+    }
+    > li:first-child {
+        border-right: 1px solid #ccc;
+        padding-right: 15px;
+    }
+    > li:nth-child(2) {
+        padding-left: 25px;
+    }
+    span {
+        justify-content: center;
+    }
+}
+.titleData {
+    font-family: "Fira Code", sans-serif;
+    font-size: 16px;
+    color: #656565;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.percentMovement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.upOrDown {
+    width: 50px;
+}

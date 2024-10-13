@@ -11,13 +11,8 @@ const Header = ({ token }: { token: TokenInterface }) => (
         <div className="flex flex-col justify-center">
             <TokenImage token={token} />
         </div>
-        <div className="ml-6 flex flex-wrap">
-            <h1 className="text-xl sm:text-2xl items-center flex w-full pr-6">
-                {token.info.symbol}
-                <div>
-                    <img src={solana} alt="solana" className="w-5 ml-2" />
-                </div>
-            </h1>
+        <div>
+            <h1 className="tokenName">{token.info.symbol}</h1>
 
             {
                 <ul className="absolute right-0 top-0 flex flex-col">
@@ -31,11 +26,11 @@ const Header = ({ token }: { token: TokenInterface }) => (
                 </ul>
             }
 
-            <ul className="flex w-full mt-4 sm:mt-8">
+            <ul className="dataToken flex w-full">
                 {token.info.marketCap && (
                     <li className="w-1/2">
-                        <span className="block text-xs">MCap</span>
-                        <span className="block text-base sm:text-lg font-black">
+                        <span className="titleData block">MCap</span>
+                        <span className="block">
                             {token.info.marketCap.toLocaleString("en-US", {
                                 compactDisplay: "short",
                                 notation: "compact",
@@ -46,20 +41,17 @@ const Header = ({ token }: { token: TokenInterface }) => (
                     </li>
                 )}
                 <li className="w-1/2">
-                    <span className="block text-xs">24H</span>
+                    <span className="titleData block">24H</span>
                     <span
-                        className={clsx(
-                            "flex items-center text-base sm:text-lg font-black",
-                            {
-                                "text-red-500": token.info.h24Change < 0,
-                                "text-green-500": token.info.h24Change >= 0,
-                            }
-                        )}>
-                        {token.info.h24Change}%{" "}
+                        className={clsx("percentMovement", {
+                            "text-red-500": token.info.h24Change < 0,
+                            "text-green-500": token.info.h24Change >= 0,
+                        })}>
+                        <span>{token.info.h24Change}% </span>
                         {token.info.h24Change >= 0 ? (
-                            <FaChevronUp className="ml-2" />
+                            <FaChevronUp className="upOrDown" />
                         ) : (
-                            <FaChevronDown className="ml-2" />
+                            <FaChevronDown className="upOrDown" />
                         )}
                     </span>
                 </li>
