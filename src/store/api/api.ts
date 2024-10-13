@@ -15,83 +15,84 @@ import { setIsInit, setShowLanding } from "../app";
 import { CACHE_VERSION } from "../middlewares/persist";
 import { getItem } from "~/services/persist";
 const refetchInterval = (fetchingFunction: CallableFunction, timer: number) => {
-  return setInterval(fetchingFunction, timer);
+    return setInterval(fetchingFunction, timer);
 };
 
 export const initStore = async (store: EnhancedStore<IRootState>) => {
-  const localHistory: TokenHistory = JSON.parse(
-    (await getItem(`buy_list_${CACHE_VERSION}`)) ?? `{"left": [],"right": []}`
-  );
-
-  const landing: boolean = await getItem("landing");
-
-  store.dispatch(setShowLanding(landing));
-  store.dispatch(initHistory(localHistory));
-
-  try {
-    const localChains: ChainInterface[] = JSON.parse(
-      (await getItem(`chains_${CACHE_VERSION}`)) ?? "[]"
+    const localHistory: TokenHistory = JSON.parse(
+        (await getItem(`buy_list_${CACHE_VERSION}`)) ??
+            `{"left": [],"right": []}`
     );
 
-    const localTokens: TokenInterface[] = JSON.parse(
-      (await getItem(`tokens_${CACHE_VERSION}`)) ?? "[]"
-    );
+    const landing: boolean = await getItem("landing");
 
-    const selectedToken: string =
-      (await getItem("selected_token")) ?? localTokens[0].id;
+    store.dispatch(setShowLanding(landing));
+    store.dispatch(initHistory(localHistory));
 
-    if (!localChains.length) throw Error("No networks on local");
-    if (!localTokens.length) throw new Error("No tokens on local");
+    try {
+        const localChains: ChainInterface[] = JSON.parse(
+            (await getItem(`chains_${CACHE_VERSION}`)) ?? "[]"
+        );
 
-    store.dispatch(setChains(localChains.map((n) => new Chain(n))));
-    store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
-    store.dispatch(select(selectedToken));
-    store.dispatch(setWeb3Modal(await setupWeb3modal(localChains)));
-    store.dispatch(setIsInit(true));
-  } catch (_) {
-    Promise.all([
-      store.dispatch(setShowLanding(true)),
-      store.dispatch(fetchChains() as any).unwrap(),
-      store
-        .dispatch(fetchTokens() as any)
-        .unwrap()
-        .then(() => {
-          store.dispatch(select(store.getState().tokens.list[0].id));
-        }),
-      store.dispatch(setIsInit(true)),
-    ]);
-  }
+        const localTokens: TokenInterface[] = JSON.parse(
+            (await getItem(`tokens_${CACHE_VERSION}`)) ?? "[]"
+        );
 
-  refetchInterval(() => {
-    store.dispatch(fetchTokens() as any);
-  }, 1000 * 60 * 5); // 1 minute
+        const selectedToken: string =
+            (await getItem("selected_token")) ?? localTokens[0].id;
+
+        if (!localChains.length) throw Error("No networks on local");
+        if (!localTokens.length) throw new Error("No tokens on local");
+
+        store.dispatch(setChains(localChains.map((n) => new Chain(n))));
+        store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
+        store.dispatch(select(selectedToken));
+        store.dispatch(setWeb3Modal(await setupWeb3modal(localChains)));
+        store.dispatch(setIsInit(true));
+    } catch (_) {
+        Promise.all([
+            store.dispatch(setShowLanding(true)),
+            store.dispatch(fetchChains() as any).unwrap(),
+            store
+                .dispatch(fetchTokens() as any)
+                .unwrap()
+                .then(() => {
+                    store.dispatch(select(store.getState().tokens.list[0].id));
+                }),
+            store.dispatch(setIsInit(true)),
+        ]);
+    }
+
+    refetchInterval(() => {
+        store.dispatch(fetchTokens() as any);
+    }, 1000 * 60 * 5); // 1 minute
 };
 
 export const fetchChains = createAsyncThunk<ChainInterface[]>(
-  "api/chains",
-  async () => {
-    const config = (await setupWeb3modal(chains)) as any;
-    dispatch(setWeb3Modal(config));
-    return chains;
-  }
+    "api/chains",
+    async () => {
+        const config = (await setupWeb3modal(chains)) as any;
+        dispatch(setWeb3Modal(config));
+        return chains;
+    }
 );
 
 export const fetchTokens = createAsyncThunk("api/tokens", async () => {
-  try {
-    const { data } = await axios.get(
-      "https://swipr-api-d30d3b6ad1d2.herokuapp.com/tokens"
-    );
+    try {
+        const { data } = await axios.get(
+            "https://swipr-api-d30d3b6ad1d2.herokuapp.com/tokens"
+        );
 
-    return data.map((token, _index) => {
-      return new Token({
-        ...token,
-        index: _index,
-      });
-    });
+        return data.map((token, _index) => {
+            return new Token({
+                ...token,
+                index: _index,
+            });
+        });
 
-    //return tokens.map((token) => token.toObject()) as TokenInterface[];
-  } catch (e) {
-    console.error(e);
-  }
-  return [];
+        //return tokens.map((token) => token.toObject()) as TokenInterface[];
+    } catch (e) {
+        console.error(e);
+    }
+    return [];
 });
