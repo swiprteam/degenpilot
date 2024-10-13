@@ -108,12 +108,35 @@ const InfoButton = styled.button`
   position: absolute;
   bottom: 0;
   right: -10px;
+  transition: all 0.3s ease;
   &:hover {
     background: linear-gradient(145deg, #3b3b3b, #474747);
     > * {
       color: #528e70;
     }
   }
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    border-left: 0.1px solid #666;
+    transform: rotate(45deg);
+  }
+  > * {
+    transition: all 0.3s ease;
+    color: #68b790;
+    font-family: "Fira Code", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: block;
+  }
+
   &:after {
     content: "";
     position: absolute;

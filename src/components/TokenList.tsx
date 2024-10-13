@@ -27,8 +27,11 @@ const TokenList = () => {
           <Swiper
             key={selectedToken.index}
             direction="vertical"
-            className="h-[800px]"
+            className="swipToken"
             initialSlide={initialIndex}
+            // slidesPerView={1.2}
+            // centeredSlides={true}
+            // spaceBetween={100}
             onSlideChangeTransitionEnd={(e) => {
               if (e.swipeDirection === "prev") prev();
               else if (e.swipeDirection === "next") next();

@@ -1,8 +1,7 @@
 import styled from "styled-components";
-
 import { TokenInterface } from "~/types/interfaces";
 import Score from "./Score";
-import Swap from "./Swap";
+// import Swap from "./Swap";
 import Buy from "./Buy";
 
 type Props = {
@@ -23,7 +22,7 @@ const TokenCard = ({ token }: Props) => {
 
 const StyledTokenCard = styled.div`
     touch-action: pan-y; /* Allows vertical scrolling */
-    background: #282828;
+    background: #131315;
     border-radius: 20px;
     padding: 20px;
 `;
