@@ -17,8 +17,8 @@ type Props = {
 const TokenCard = ({ token }: Props) => {
     return (
         <StyledTokenCard className="mt-4 flex flex-col overflow-hidden">
-            {/* <Header token={token} /> */}
             <Score token={token} />
+            <Header token={token} />
             <Swap token={token} />
         </StyledTokenCard>
     );

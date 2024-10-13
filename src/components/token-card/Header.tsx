@@ -7,7 +7,7 @@ import Graph from "@/assets/graph.png";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const Header = ({ token }: { token: TokenInterface }) => (
-    <Box bordered className="name w-full flex p-4 relative">
+    <Box className="name w-full flex p-4 relative">
         <div className="flex flex-col justify-center">
             <TokenImage token={token} />
         </div>

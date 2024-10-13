@@ -63,9 +63,9 @@ const CircularGauge = ({ score }: { score: number }) => {
         const rotate = `rotate(${angle}, 100, 100)`;
         const ratio = index / totalSegments;
         const color =
-            index < filledSegments ? interpolateColor(ratio) : "#e0e0e0";
+            index < filledSegments ? interpolateColor(ratio) : "#656565";
         const borderColor =
-            index < filledSegments ? darkenColor(color) : "#ccc";
+            index < filledSegments ? darkenColor(color) : "#4f4f4f";
 
         const segmentHeight =
             index === 0 || index === totalSegments - 1 || index % 5 === 0

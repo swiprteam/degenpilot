@@ -81,3 +81,9 @@ button:focus-visible {
         background-color: #f9f9f9;
     }
 }
+
+@media all and (min-width: 768px) {
+    .max-w-md {
+        width: 28rem;
+    }
+}
