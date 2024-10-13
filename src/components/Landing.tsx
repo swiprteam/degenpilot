@@ -48,7 +48,7 @@ const Landing = () => {
 export default Landing;
 
 export const Layout = styled.div`
-    background: #030303;
+    background: #060606;
     min-height: 100vh;
     display: flex;
     flex-direction: column;

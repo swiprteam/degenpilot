@@ -3,6 +3,7 @@ export const Box = styled.div<{ bordered?: boolean }>``;
 
 export const AddressButton = styled.button`
     width: auto;
+    font-family: "Fira Code", sans-serif;
     border-radius: 10.625px;
     background: #1d1d1d;
     border: 1px solid #1d1d1d;
