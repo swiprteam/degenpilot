@@ -4,6 +4,7 @@ import { Box } from "~/utils/styled";
 import CircularGauge from "../CircularJauge";
 import { TokenInterface } from "~/types/interfaces";
 import Detail from "./Detail";
+import Header from "./Header";
 
 // Styled components with Tailwind classes
 const FlipperContainer = styled.div`
@@ -59,30 +60,34 @@ const Score = ({ token }: { token: TokenInterface }) => {
     const score = token.score.value;
 
     return (
-        <FlipperContainer className="mt-4 sm:mt-8">
-            <div className="tagNew">New</div>
-            <Flipper isFlipped={isFlipped}>
-                {/* Front side */}
-                <FrontFace bordered>
-                    {/* <InfoButton
-                        className="absolute right-0 top-0 m-2"
-                        onClick={handleFlip}>
-                        <span>+INFO</span>
-                    </InfoButton> */}
-                    <CircularGauge score={score} />
-                </FrontFace>
-
-                {/* Back side */}
-                <BackFace className="back" bordered>
-                    <InfoButton
-                        className="absolute right-0 top-0 m-2"
-                        onClick={handleFlip}>
-                        <span>SCORE</span>
-                    </InfoButton>
-                    <Detail token={token} />
-                </BackFace>
-            </Flipper>
-        </FlipperContainer>
+        <>
+            <FlipperContainer className="mt-4 sm:mt-8">
+                <div className="tagNew">New</div>
+                <Flipper isFlipped={isFlipped}>
+                    {/* Front side */}
+                    <FrontFace bordered>
+                        <CircularGauge score={score} />
+                    </FrontFace>
+                    {/* Back side */}
+                    <BackFace className="back" bordered>
+                        <Detail token={token} />
+                    </BackFace>
+                </Flipper>
+            </FlipperContainer>
+            <Header token={token} />
+            <div className="relative buttonsToken">
+                <InfoButton
+                    className="absolute right-0 top-0 m-2"
+                    onClick={handleFlip}>
+                    <span>S</span>
+                </InfoButton>
+                <InfoButton
+                    className="absolute right-0 top-0 m-2"
+                    onClick={handleFlip}>
+                    <span>i</span>
+                </InfoButton>
+            </div>
+        </>
     );
 };
 
@@ -90,18 +95,43 @@ const InfoButton = styled.button`
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    border-radius: 7px;
     padding: 5px;
     display: block;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: #252525;
+    z-index: 2;
+    background: linear-gradient(145deg, #474747, #3b3b3b);
+    border: none;
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    &:hover {
+        background: linear-gradient(145deg, #3b3b3b, #474747);
+        > * {
+            color: #528e70;
+        }
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        border-left: 0.1px solid #666;
+        transform: rotate(45deg);
+    }
     > * {
-        border-radius: 7px;
-        text-transform: uppercase;
-        font-size: 12px;
+        color: #68b790;
+        font-family: "Fira Code", sans-serif;
+        font-size: 22px;
         font-style: normal;
-        font-weight: 700;
+        font-weight: 400;
         line-height: normal;
         display: block;
-        padding: 12px 10px;
     }
 `;
 

@@ -237,3 +237,6 @@
 .upOrDown {
     width: 50px;
 }
+.buttonsToken {
+    min-height: 60px;
+}
