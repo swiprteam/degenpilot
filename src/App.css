@@ -116,7 +116,7 @@
     right: -20px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #656565;
-    padding: 5px 20px;
+    padding: 2px 15px;
     border-radius: 20px 0 0 20px;
     text-transform: uppercase;
     font-weight: bold;
@@ -240,3 +240,5 @@
 .buttonsToken {
     min-height: 60px;
 }
+
+/* ------ */
