@@ -96,19 +96,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    &:after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 36px;
-        background: linear-gradient(
-            180deg,
-            rgba(3, 3, 3, 1) 0%,
-            rgb(41, 41, 41) 100%
-        );
-        margin: 2rem 0;
-        border-radius: 0 0 20px 20px;
-    }
 }
 .tagNew {
     position: absolute;
@@ -116,7 +103,7 @@
     right: -20px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #656565;
-    padding: 5px 20px;
+    padding: 2px 15px;
     border-radius: 20px 0 0 20px;
     text-transform: uppercase;
     font-weight: bold;
@@ -138,7 +125,7 @@
 }
 .gauge-container {
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.04);
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
     margin: 10px;
 }
@@ -236,4 +223,41 @@
 }
 .upOrDown {
     width: 50px;
+}
+.buttonsToken {
+    min-height: 60px;
+}
+
+/* ------ */
+.inputBuy {
+    background: none;
+    width: 70%;
+    border: 2px solid #3a3a3a;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: #fff;
+}
+.buttonBuy {
+    background: #68b790;
+    border: 2px solid #268556;
+    text-transform: uppercase;
+    color: #08512d;
+    border-radius: 20px;
+    padding: 5px 20px;
+    transition: all 0.3s;
+    &:disabled {
+        border: 2px solid #656565;
+        background: #3a3a3a;
+        color: #656565;
+        cursor: not-allowed;
+    }
+}
+.wrapBuy {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    font-size: 18px;
+}
+.swipToken {
+    height: 700px;
 }
