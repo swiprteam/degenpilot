@@ -8,6 +8,7 @@ import TokenCard from "./token-card/Card";
 
 import { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Keyboard } from "swiper/modules";
 
 import { next, prev } from "~/services/tokens";
 
@@ -25,10 +26,15 @@ const TokenList = () => {
                 <div className="mb-8 md:p-8">
                     <Header />
                     <Swiper
+                        modules={[Keyboard]}
                         key={selectedToken.index}
                         direction="vertical"
                         className="swipToken"
                         initialSlide={initialIndex}
+                        keyboard={{
+                            enabled: true,
+                            onlyInViewport: false,
+                        }}
                         // slidesPerView={1.2}
                         // centeredSlides={true}
                         // spaceBetween={100}
