@@ -7,13 +7,18 @@ import Header from "./Header";
 import TokenCard from "./token-card/Card";
 import Up from "/up.png";
 import Down from "/down.png";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMemo } from "react";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import { Keyboard } from "swiper/modules";
 import { next, prev } from "~/services/tokens";
 import Buy from "./token-card/Buy";
+import {
+  useWeb3ModalAccount,
+  useWeb3ModalProvider,
+} from "@web3modal/solana/react";
 
+import solona from "@/assets/solana.png";
 const TokenList = () => {
   const tokens = useTokens();
 
@@ -22,6 +27,11 @@ const TokenList = () => {
 
   const [isAnimating, setIsAnimating] = useState(false);
   const [isInit, setIsInit] = useState(false);
+
+  const { isConnected } = useWeb3ModalAccount();
+  const { connection, walletProvider } = useWeb3ModalProvider();
+
+  const [balance, setBalance] = useState(0);
 
   const initialIndex = useMemo(() => {
     if (selectedToken.index < 2) return selectedToken.index;
@@ -61,6 +71,12 @@ const TokenList = () => {
       return isCurrent || isNext || isPrev;
     });
   }, [selectedToken.index, tokens]);
+  useEffect(() => {
+    if (!isConnected) return;
+    connection.getBalance(walletProvider.publicKey).then((balance) => {
+      setBalance(balance / 10e9);
+    });
+  }, [walletProvider, connection, isConnected]);
 
   return (
     <AppLayout>
@@ -145,6 +161,11 @@ const TokenList = () => {
             })}
           </Swiper>
           <Buy />
+          <div className="flex mt-4 flex w-full justify-end">
+            <span className="mr-4 font-base">Balance :</span>
+            <img src={solona} alt="solana" />
+            <span className="ml-2">{Math.round(balance * 10000) / 10000}</span>
+          </div>
           <div
             onClick={handlePrevClick}
             className="nav-swiper swiper-button-prev"
