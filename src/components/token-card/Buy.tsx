@@ -13,6 +13,7 @@ const FEES = 0.01; // 1% fee
 const Buy = () => {
   const token = useSelectedToken();
   const { connection, walletProvider } = useWeb3ModalProvider();
+
   const values = useMemo(
     () => [
       { key: "0.1", value: 0.1, label: "0.1 SOL" },
