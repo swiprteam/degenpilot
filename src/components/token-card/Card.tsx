@@ -5,24 +5,24 @@ import Score from "./Score";
 import Buy from "./Buy";
 
 type Props = {
-  token: TokenInterface;
+    token: TokenInterface;
 };
 
 const TokenCard = ({ token }: Props) => {
-  return (
-    <>
-      <StyledTokenCard className="mt-4 flex flex-col overflow-hidden">
-        <Score token={token} />
-      </StyledTokenCard>
-    </>
-  );
+    return (
+        <>
+            <StyledTokenCard className="mt-4 flex flex-col overflow-hidden">
+                <Score token={token} />
+            </StyledTokenCard>
+        </>
+    );
 };
 
 const StyledTokenCard = styled.div`
-  touch-action: pan-y; /* Allows vertical scrolling */
-  background: #131315;
-  border-radius: 20px;
-  padding: 20px;
+    touch-action: pan-y; /* Allows vertical scrolling */
+    background: #131315;
+    border-radius: 20px;
+    padding: 20px;
 `;
 
 export default TokenCard;
