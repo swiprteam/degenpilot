@@ -11,7 +11,7 @@ import { ChainInterface, TokenInterface } from "~/types/interfaces";
 import { Token } from "~/model/token";
 import { initHistory, select, setTokens, TokenHistory } from "../tokens";
 import { setupWeb3modal } from "~/utils/setup-web3modal";
-import { setIsInit, setShowLanding } from "../app";
+import { setIsInit } from "../app";
 import { CACHE_VERSION } from "../middlewares/persist";
 import { getItem } from "~/services/persist";
 const refetchInterval = (fetchingFunction: CallableFunction, timer: number) => {
@@ -23,9 +23,6 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
     (await getItem(`buy_list_${CACHE_VERSION}`)) ?? `{"left": [],"right": []}`
   );
 
-  const landing: boolean = await getItem("landing");
-
-  store.dispatch(setShowLanding(landing));
   store.dispatch(initHistory(localHistory));
 
   try {
@@ -50,7 +47,6 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
     store.dispatch(setIsInit(true));
   } catch (_) {
     Promise.all([
-      store.dispatch(setShowLanding(true)),
       store.dispatch(fetchChains() as any).unwrap(),
       store
         .dispatch(fetchTokens() as any)

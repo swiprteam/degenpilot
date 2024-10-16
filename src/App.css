@@ -1,329 +1,329 @@
 .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
 .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 @keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
-    }
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
 .card {
-    padding: 2em;
+  padding: 2em;
 }
 
 .read-the-docs {
-    color: #888;
+  color: #888;
 }
 
 /* ----- */
 
 .wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
 }
 .landingWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
 }
 .brandTitle {
-    font-family: "Krona One", sans-serif;
-    font-size: 22px;
-    font-weight: 100;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    text-align: center;
-    margin: 2rem;
-    color: #68b790;
+  font-family: "Krona One", sans-serif;
+  font-size: 22px;
+  font-weight: 100;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 2rem;
+  color: #68b790;
 }
 .slogan {
-    font-family: "Krona One", sans-serif;
+  font-family: "Krona One", sans-serif;
 }
 .landingLogoConnect {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
 }
 .emphaz {
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 25px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 25px;
 }
 .descLanding {
-    color: #c6c6c6;
-    font-size: 16px;
-    text-align: center;
-    margin: 2rem;
-    font-family: "Fira Code", sans-serif;
-    text-transform: unset;
+  color: #c6c6c6;
+  font-size: 16px;
+  text-align: center;
+  margin: 2rem;
+  font-family: "Fira Code", sans-serif;
+  text-transform: unset;
 }
 
 /* ----- */
 .backGroundGeneral {
-    background-color: #060606;
-    color: #fff;
+  background-color: #060606;
+  color: #fff;
 }
 .cardHeader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .tagNew {
-    position: absolute;
-    top: -30px;
-    right: -20px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #656565;
-    padding: 2px 15px;
-    border-radius: 20px 0 0 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 18px;
-    letter-spacing: 2px;
+  position: absolute;
+  top: -30px;
+  right: -20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #656565;
+  padding: 2px 15px;
+  border-radius: 20px 0 0 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 2px;
 }
 .cardHeader .brand {
-    font-family: "Krona One", sans-serif;
-    font-size: 22px;
-    width: 100%;
-    flex-direction: row;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    color: #68b790;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
+  font-family: "Krona One", sans-serif;
+  font-size: 22px;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #68b790;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
 }
 .gauge-container {
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.04);
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    margin: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  margin: 10px;
 }
 .gauge {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 .gauge-score {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    .score-text {
-        font-size: 50px;
-        font-weight: 700;
-        color: #fff;
-        line-height: 1;
-    }
-    .score-info {
-        font-size: 16px;
-        font-family: "Fira Code", sans-serif;
-        color: #c6c6c6;
-    }
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  .score-text {
+    font-size: 50px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .score-info {
+    font-size: 16px;
+    font-family: "Fira Code", sans-serif;
+    color: #c6c6c6;
+  }
 }
 .glass {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 200px;
-    padding: 1rem;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    z-index: 1;
-    margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 200px;
+  padding: 1rem;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  margin: 0 auto;
 }
 /* ------ */
 
 .name {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: -55px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -55px;
 }
 .imgToken {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .imgToken img {
-    width: 50px;
-    height: 50px;
-    aspect-ratio: 1;
+  width: 50px;
+  height: 50px;
+  aspect-ratio: 1;
 }
 .tokenName {
-    text-align: center;
-    font-family: "Fira Code", sans-serif;
-    font-size: 26px;
-    margin-top: 20px;
-    color: #c6c6c6;
-    font-weight: 600;
+  text-align: center;
+  font-family: "Fira Code", sans-serif;
+  font-size: 26px;
+  margin-top: 20px;
+  color: #c6c6c6;
+  font-weight: 600;
 }
 .dataToken {
-    text-align: center;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    color: #c6c6c6;
-    font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: #c6c6c6;
+  font-weight: bold;
 
-    li {
-        width: 50%;
-    }
-    > li:first-child {
-        border-right: 1px solid #ccc;
-        padding-right: 15px;
-    }
-    > li:nth-child(2) {
-        padding-left: 25px;
-    }
-    span {
-        justify-content: center;
-    }
+  li {
+    width: 50%;
+  }
+  > li:first-child {
+    border-right: 1px solid #ccc;
+    padding-right: 15px;
+  }
+  > li:nth-child(2) {
+    padding-left: 25px;
+  }
+  span {
+    justify-content: center;
+  }
 }
 .titleData {
-    font-family: "Fira Code", sans-serif;
-    font-size: 16px;
-    color: #656565;
-    font-weight: 600;
-    text-transform: uppercase;
+  font-family: "Fira Code", sans-serif;
+  font-size: 16px;
+  color: #656565;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .percentMovement {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 .upOrDown {
-    width: 50px;
+  width: 50px;
 }
 .buttonsToken {
-    min-height: 60px;
-    .left {
-        left: -10px;
-    }
+  min-height: 60px;
+  .left {
+    left: -10px;
+  }
 }
 
 /* ------ */
 .inputBuy {
-    background: none;
-    width: 70%;
-    border: 2px solid #3a3a3a;
-    padding: 5px 15px;
-    border-radius: 20px;
-    color: #fff;
+  background: none;
+  width: 70%;
+  border: 2px solid #3a3a3a;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: #fff;
 }
 .buttonBuy {
-    background: #68b790;
-    border: 2px solid #268556;
-    text-transform: uppercase;
-    color: #08512d;
-    border-radius: 20px;
-    padding: 5px 20px;
-    transition: all 0.3s;
-    &:disabled {
-        border: 2px solid #656565;
-        background: #3a3a3a;
-        color: #656565;
-        cursor: not-allowed;
-    }
+  background: #68b790;
+  border: 2px solid #268556;
+  text-transform: uppercase;
+  color: #08512d;
+  border-radius: 20px;
+  padding: 5px 20px;
+  transition: all 0.3s;
+  &:disabled {
+    border: 2px solid #656565;
+    background: #3a3a3a;
+    color: #656565;
+    cursor: not-allowed;
+  }
 }
 .wrapBuy {
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    font-size: 18px;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  font-size: 18px;
 }
 .swipToken {
-    height: 700px;
+  height: 700px;
 }
 
 .wrapperScreen {
-    position: relative;
+  position: relative;
 }
 .nav-swiper {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    right: -150px;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background: #474747;
-    z-index: 2;
-    background: linear-gradient(145deg, #474747, #3b3b3b);
-    border: none;
-    position: absolute;
-    bottom: 0;
-    right: -50px;
-    top: 50%;
-    transition: all 0.3s ease;
-    &:hover {
-        background: linear-gradient(145deg, #3b3b3b, #474747);
-        > * {
-            color: #528e70;
-        }
-    }
-    &:after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        top: 0;
-        left: 0;
-        border-left: 0.1px solid #666;
-        transform: rotate(45deg);
-    }
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  right: -150px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: #474747;
+  z-index: 2;
+  background: linear-gradient(145deg, #474747, #3b3b3b);
+  border: none;
+  position: absolute;
+  bottom: 0;
+  right: -50px;
+  top: 50%;
+  transition: all 0.3s ease;
+  &:hover {
+    background: linear-gradient(145deg, #3b3b3b, #474747);
     > * {
-        transition: all 0.3s ease;
-        color: #68b790;
-        font-family: "Fira Code", sans-serif;
-        font-size: 22px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        display: block;
+      color: #528e70;
     }
-    &.swiper-button-prev {
-        margin-top: -40px;
-    }
-    &.swiper-button-next {
-        margin-top: 40px;
-    }
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    border-left: 0.1px solid #666;
+    transform: rotate(45deg);
+  }
+  > * {
+    transition: all 0.3s ease;
+    color: #68b790;
+    font-family: "Fira Code", sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: block;
+  }
+  &.swiper-button-prev {
+    margin-top: -40px;
+  }
+  &.swiper-button-next {
+    margin-top: 40px;
+  }
 }
