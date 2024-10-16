@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import {
   isInitSelector,
-  landingSelector,
   showBuySelector,
   showVideoSelector,
 } from "~/store/selectors/app";
