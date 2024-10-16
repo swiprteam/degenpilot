@@ -13,6 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Navigation } from "swiper/modules";
 
 import { next, prev } from "~/services/tokens";
+import Buy from "./token-card/Buy";
 
 const TokenList = () => {
   const tokens = useTokens();
@@ -95,6 +96,7 @@ const TokenList = () => {
               );
             })}
           </Swiper>
+          <Buy />
           <div className="nav-swiper swiper-button-prev">
             <img src={Up} alt="up" />
           </div>
