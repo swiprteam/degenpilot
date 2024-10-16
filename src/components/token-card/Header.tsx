@@ -29,7 +29,7 @@ const Header = ({ token }: { token: TokenInterface }) => (
                 {token.info.marketCap && (
                     <li className="w-1/2">
                         <span className="titleData block">MCap</span>
-                        <span className="block">
+                        <span className="chiffres block">
                             {token.info.marketCap.toLocaleString("en-US", {
                                 compactDisplay: "short",
                                 notation: "compact",
@@ -40,13 +40,15 @@ const Header = ({ token }: { token: TokenInterface }) => (
                     </li>
                 )}
                 <li className="w-1/2">
-                    <span className="titleData block">24H</span>
+                    <span className=" titleData block">24H</span>
                     <span
                         className={clsx("percentMovement", {
                             "text-red-500": token.info.h24Change < 0,
                             "text-green-500": token.info.h24Change >= 0,
                         })}>
-                        <span>{token.info.h24Change}% </span>
+                        <span className="chiffres">
+                            {token.info.h24Change}%{" "}
+                        </span>
                         {token.info.h24Change >= 0 ? (
                             <FaChevronUp className="upOrDown" />
                         ) : (

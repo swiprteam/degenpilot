@@ -3,6 +3,72 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "NB-Regular";
+    font-display: swap;
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-Regular.eot");
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-Regular.eot?#iefix")
+            format("embedded-opentype"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-Regular.woff2")
+            format("woff2"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-Regular.woff")
+            format("woff"),
+        url("/src/assets/fonts/TTF/NewBlackTypeface-Regular.ttf")
+            format("truetype");
+}
+@font-face {
+    font-family: "NB-Bold";
+    font-display: swap;
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-Bold.eot");
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-Bold.eot?#iefix")
+            format("embedded-opentype"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-Bold.woff2")
+            format("woff2"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-Bold.woff")
+            format("woff"),
+        url("/src/assets/fonts/TTF/NewBlackTypeface-Bold.ttf")
+            format("truetype");
+}
+@font-face {
+    font-family: "NB-Light";
+    font-display: swap;
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-Light.eot");
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-Light.eot?#iefix")
+            format("embedded-opentype"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-Light.woff2")
+            format("woff2"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-Light.woff")
+            format("woff"),
+        url("/src/assets/fonts/TTF/NewBlackTypeface-Light.ttf")
+            format("truetype");
+}
+@font-face {
+    font-family: "NB-Medium";
+    font-display: swap;
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-Medium.eot");
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-Medium.eot?#iefix")
+            format("embedded-opentype"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-Medium.woff2")
+            format("woff2"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-Medium.woff")
+            format("woff"),
+        url("/src/assets/fonts/TTF/NewBlackTypeface-Medium.ttf")
+            format("truetype");
+}
+@font-face {
+    font-family: "NB-ExtraBold";
+    font-display: swap;
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-ExtraBold.eot");
+    src: url("/src/assets/fonts/EOT/NewBlackTypeface-ExtraBold.eot?#iefix")
+            format("embedded-opentype"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-ExtraBold.woff2")
+            format("woff2"),
+        url("/src/assets/fonts/WOFF&WOFF2/NewBlackTypeface-ExtraBold.woff")
+            format("woff"),
+        url("/src/assets/fonts/TTF/NewBlackTypeface-ExtraBold.ttf")
+            format("truetype");
+}
+
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -42,7 +108,7 @@ body {
     min-width: 320px;
     min-height: 100vh;
     background-color: #060606;
-    font-family: "Roboto", sans-serif;
+    font-family: "NB-Regular", sans-serif;
 }
 
 h1 {
