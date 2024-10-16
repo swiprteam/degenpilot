@@ -10,6 +10,18 @@ export type Score = {
   details: ScoreDetail;
 };
 
+enum GradeType {
+  VOLUME = "volume",
+  SMALL_HOLDERS = "medium_holders",
+  BIG_HOLDERS = "big_holders",
+  SOCIAL = "social",
+}
+
+export type TokenGrade = {
+  value: number;
+  type: GradeType;
+};
+
 export type TokenMeta = {
   name: string;
   symbol: string;

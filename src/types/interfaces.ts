@@ -1,4 +1,4 @@
-import { Score, TokenInfo, TokenLinks } from "./types";
+import { Score, TokenGrade, TokenInfo, TokenLinks } from "./types";
 
 export interface ChainInterface {
   id: number | string;
@@ -40,4 +40,5 @@ export interface TokenInterface {
     updatedAt: Date;
   };
   index: number;
+  grades: TokenGrade[];
 }
