@@ -10,6 +10,7 @@ import { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { next, prev } from "~/services/tokens";
+import { Keyboard } from "swiper/modules";
 
 const TokenList = () => {
   const tokens = useTokens();
@@ -25,6 +26,7 @@ const TokenList = () => {
         <div className="mb-8 md:p-8">
           <Header />
           <Swiper
+            modules={[Keyboard]}
             key={selectedToken.index}
             direction="vertical"
             className="swipToken"
@@ -32,6 +34,10 @@ const TokenList = () => {
             // slidesPerView={1.2}
             // centeredSlides={true}
             // spaceBetween={100}
+            keyboard={{
+              enabled: true,
+              onlyInViewport: false,
+            }}
             onSlideChangeTransitionEnd={(e) => {
               if (e.swipeDirection === "prev") prev();
               else if (e.swipeDirection === "next") next();
