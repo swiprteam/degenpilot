@@ -168,13 +168,13 @@ const TokenList = () => {
           </div>
           <div
             onClick={handlePrevClick}
-            className="nav-swiper swiper-button-prev"
+            className="nav-swiper swiper-button-prev hidden md:flex"
           >
             <img src={Up} alt="up" />
           </div>
           <div
             onClick={handleNextClick}
-            className="nav-swiper swiper-button-next"
+            className="nav-swiper swiper-button-next hidden md:flex"
           >
             <img src={Down} alt="down" />
           </div>
