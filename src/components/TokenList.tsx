@@ -5,12 +5,14 @@ import AuthLayout from "~/layout/AuthLayout";
 import { AppLayout } from "~/utils/styled";
 import Header from "./Header";
 import TokenCard from "./token-card/Card";
+import Up from "/up.png";
+import Down from "/down.png";
 
 import { useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Keyboard, Navigation } from "swiper/modules";
 
 import { next, prev } from "~/services/tokens";
-import { Keyboard } from "swiper/modules";
 
 const TokenList = () => {
   const tokens = useTokens();
@@ -23,21 +25,26 @@ const TokenList = () => {
   return (
     <AppLayout>
       <AuthLayout>
-        <div className="mb-8 md:p-8">
+        <div className="wrapperScreen mb-8 md:p-8">
           <Header />
           <Swiper
-            modules={[Keyboard]}
+            modules={[Keyboard, Navigation]}
             key={selectedToken.index}
             direction="vertical"
             className="swipToken"
             initialSlide={initialIndex}
-            // slidesPerView={1.2}
-            // centeredSlides={true}
-            // spaceBetween={100}
             keyboard={{
               enabled: true,
               onlyInViewport: false,
             }}
+            navigation={{
+              enabled: true,
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            // slidesPerView={1.2}
+            // centeredSlides={true}
+            // spaceBetween={100}
             onSlideChangeTransitionEnd={(e) => {
               if (e.swipeDirection === "prev") prev();
               else if (e.swipeDirection === "next") next();
@@ -88,6 +95,12 @@ const TokenList = () => {
               );
             })}
           </Swiper>
+          <div className="nav-swiper swiper-button-prev">
+            <img src={Up} alt="up" />
+          </div>
+          <div className="nav-swiper swiper-button-next">
+            <img src={Down} alt="down" />
+          </div>
         </div>
       </AuthLayout>
     </AppLayout>

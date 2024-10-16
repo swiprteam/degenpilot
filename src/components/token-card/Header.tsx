@@ -1,5 +1,4 @@
 import { TokenInterface } from "~/types/interfaces";
-import solana from "@/assets/solana.png";
 import { Box } from "~/utils/styled";
 import TokenImage from "../TokenImage";
 import clsx from "clsx";
@@ -14,7 +13,7 @@ const Header = ({ token }: { token: TokenInterface }) => (
         <div>
             <h1 className="tokenName">{token.info.symbol}</h1>
 
-            {
+            {/* {
                 <ul className="absolute right-0 top-0 flex flex-col">
                     <li className="p-3">
                         <a
@@ -24,7 +23,7 @@ const Header = ({ token }: { token: TokenInterface }) => (
                         </a>
                     </li>
                 </ul>
-            }
+            } */}
 
             <ul className="dataToken flex w-full">
                 {token.info.marketCap && (
