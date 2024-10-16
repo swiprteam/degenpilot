@@ -30,17 +30,8 @@ const persistTokenHistoryMiddleware: Middleware =
     }
   };
 
-const persistShowLandingMiddleware: Middleware =
-  () => (next) => (action: any) => {
-    next(action);
-    if (action.type === "app/setShowLanding") {
-      setItem(`landing_${CACHE_VERSION}`, action.payload);
-    }
-  };
-
 export default [
   persistAPIDataMiddleware,
   persistTokenHistoryMiddleware,
-  persistShowLandingMiddleware,
   persistSelected,
 ] as Middleware[];

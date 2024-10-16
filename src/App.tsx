@@ -1,9 +1,8 @@
 import { useWeb3ModalAccount } from "@web3modal/solana/react";
 import { useEffect } from "react";
 import "./App.css";
-import Landing from "./components/Landing";
 import TokenList from "./components/TokenList";
-import { useIsInit, useShowLanding, useShowVideo } from "./hooks/app";
+import { useIsInit, useShowVideo } from "./hooks/app";
 import { dispatch } from "./store";
 import { setConnectedAddress } from "./store/web3";
 import buyVideo from "@/assets/buy.mp4";
@@ -23,10 +22,9 @@ function App() {
     else dispatch(setConnectedAddress(null));
   }, [address, isConnected]);
   const isInit = useIsInit();
-  const showLanding = useShowLanding();
+
   const showVideo = useShowVideo();
   if (!isInit) return null;
-  if (showLanding) return <Landing />;
 
   return (
     <>
