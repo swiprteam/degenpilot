@@ -13,7 +13,6 @@ const TokenCard = ({ token }: Props) => {
         <>
             <StyledTokenCard className="mt-4 flex flex-col overflow-hidden">
                 <Score token={token} />
-                {/* <Swap token={token} /> */}
             </StyledTokenCard>
             <Buy token={token} />
         </>

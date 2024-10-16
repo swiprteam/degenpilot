@@ -6,6 +6,7 @@ import { TokenInterface } from "~/types/interfaces";
 import Detail from "./Detail";
 import Header from "./Header";
 import { useSelectedToken } from "~/hooks/tokens";
+import Canon from "/canon.png";
 
 // Styled components with Tailwind classes
 const FlipperContainer = styled.div`
@@ -22,7 +23,7 @@ const Flipper = styled.div<{ isFlipped: boolean }>`
     props.isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"};
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 435px;
 `;
 
 const FrontFace = styled(Box)`
@@ -55,34 +56,38 @@ const BackFace = styled(Box)`
 const Score = ({ token }: { token: TokenInterface }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const selectedToken = useSelectedToken();
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
 
-  const selectedToken = useSelectedToken();
-  const score = token.score.value;
   return (
     <>
       <FlipperContainer className="mt-4 sm:mt-8">
         <div className="tagNew">New</div>
         <Flipper isFlipped={isFlipped}>
-          {/* Front side */}
           <FrontFace bordered>
             <CircularGauge
-              score={score}
+              score={token.score.value}
               animate={token.id === selectedToken.id}
             />
+            <Header token={token} />
           </FrontFace>
-          {/* Back side */}
           <BackFace className="back" bordered>
             <Detail token={token} />
           </BackFace>
         </Flipper>
       </FlipperContainer>
-      <Header token={token} />
       <div className="relative buttonsToken">
-        <InfoButton className="absolute right-0 top-0 m-2" onClick={handleFlip}>
-          <span>S</span>
+        <InfoButton className="left absolute right-0 top-0 m-2">
+          <span>
+            <a
+              href={`https://dexscreener.com/solana/${token.info.address}`}
+              target="_blank"
+            >
+              <img src={Canon} alt="" />{" "}
+            </a>
+          </span>
         </InfoButton>
         <InfoButton className="absolute right-0 top-0 m-2" onClick={handleFlip}>
           <span>i</span>
