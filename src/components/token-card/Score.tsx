@@ -117,6 +117,9 @@ const InfoButton = styled.button`
     top: -20px;
     right: -10px;
     transition: all 0.3s ease;
+    @media all and (max-width: 1024px) {
+        top: -50px;
+    }
     &:hover {
         background: linear-gradient(145deg, #3b3b3b, #474747);
         > * {

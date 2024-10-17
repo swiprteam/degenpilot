@@ -148,9 +148,15 @@ button:focus-visible {
     }
 }
 
-@media all and (min-width: 768px) {
+@media all and (min-width: 1024px) {
     .max-w-md {
         width: 28rem;
         max-width: 28rem;
+    }
+}
+@media all and (max-width: 1024px) {
+    .max-w-md {
+        width: 26rem;
+        max-width: 26rem;
     }
 }

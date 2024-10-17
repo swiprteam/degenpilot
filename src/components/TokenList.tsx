@@ -96,11 +96,25 @@ const TokenList = () => {
                             enabled: true,
                             onlyInViewport: false,
                         }}
+                        breakpoints={{
+                            1024: {
+                                slidesPerView: 1.2,
+                                spaceBetween: 10,
+                            },
+                            600: {
+                                slidesPerView: 1.2,
+                                spaceBetween: 20,
+                            },
+                            300: {
+                                slidesPerView: 1.3,
+                                spaceBetween: 20,
+                            },
+                        }}
                         speed={500}
                         effect="slide"
                         slidesPerView={1.2}
                         centeredSlides={true}
-                        spaceBetween={10}
+                        spaceBetween={30}
                         onSlidePrevTransitionEnd={() => {
                             if (!isInit) return;
                             prev();
@@ -163,7 +177,7 @@ const TokenList = () => {
                         })}
                     </Swiper>
                     <Buy />
-                    <div className="flex mt-4 w-full justify-end items-center">
+                    <div className="balanceWrap flex mt-4 w-full justify-end items-center">
                         <span className="mr-4 balance">Balance :</span>
                         <img className="solonaLogo" src={solona} alt="solana" />
                         <span className="ml-2">

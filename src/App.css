@@ -546,13 +546,40 @@
     width: 10px;
     height: 13px;
 }
-/* @media all and (max-height: 768px) {
-    .swipToken {
-        height: 500px;
+@media all and (max-width: 1024px) {
+    .nav-swiper {
+        display: none !important;
     }
-    .mobileFlip {
-        height: 300px !important;
-        width: 80% !important;
-        margin: 0 auto;
+    .wrapperScreen {
+        margin-bottom: 0 !important;
+        padding: 10px !important;
     }
-} */
+    .formBuy {
+        margin-top: 10px !important;
+    }
+    .balanceWrap {
+        margin-top: 5px !important;
+    }
+    .infoButton {
+        top: -50px !important;
+    }
+    .gauge-container {
+        height: 220px !important;
+        width: 220px !important;
+    }
+    .score-text {
+        font-size: 40px !important;
+    }
+    .score-info {
+        font-size: 14px !important;
+    }
+    .tokenName {
+        font-size: 20px;
+    }
+    .titleData {
+        font-size: 14px;
+    }
+    .dataToken {
+        font-size: 14px;
+    }
+}
