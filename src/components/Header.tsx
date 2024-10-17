@@ -14,7 +14,7 @@ const Header = () => {
             <Box className="cardHeader flex w-full ">
                 <div className="brand">
                     <Logo className="w-8 sm:w-10" />
-                    Swiper
+                    Swipr
                 </div>
                 <div className="w-full flex justify-end">
                     <AddressButton className="" onClick={() => instance.open()}>
