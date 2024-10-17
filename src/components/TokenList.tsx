@@ -123,7 +123,7 @@ const TokenListContent = () => {
                                 slidesPerView: 1.2,
                                 spaceBetween: 10,
                             },
-                            450: {
+                            430: {
                                 slidesPerView: 1.3,
                                 spaceBetween: 20,
                             },
@@ -222,11 +222,10 @@ const TokenListContent = () => {
     );
 };
 
-
 const TokenList = () => {
-  const isLoading = useIsLoading()
-  if(isLoading) return;
-  return <TokenListContent />;
-}
+    const isLoading = useIsLoading();
+    if (isLoading) return;
+    return <TokenListContent />;
+};
 
 export default TokenList;
