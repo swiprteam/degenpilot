@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import { useSelectedToken, useTokens } from "~/hooks/tokens";
+import { useIsLoading, useSelectedToken, useTokens } from "~/hooks/tokens";
 import AuthLayout from "~/layout/AuthLayout";
 import { AppLayout } from "~/utils/styled";
 import Header from "./Header";
@@ -19,7 +19,7 @@ import {
 } from "@web3modal/solana/react";
 
 import solona from "@/assets/solana.png";
-const TokenList = () => {
+const TokenListContent = () => {
     const tokens = useTokens();
 
     const selectedToken = useSelectedToken();
@@ -221,5 +221,12 @@ const TokenList = () => {
         </AppLayout>
     );
 };
+
+
+const TokenList = () => {
+  const isLoading = useIsLoading()
+  if(isLoading) return;
+  return <TokenListContent />;
+}
 
 export default TokenList;
