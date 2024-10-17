@@ -27,6 +27,9 @@ const StyledTokenCard = styled.div`
     @media all and (max-width: 1024px) {
         max-height: 425px;
     }
+    @media all and (max-width: 375px) and (min-height: 600px) {
+        max-height: 380px;
+    }
 `;
 
 export default TokenCard;
