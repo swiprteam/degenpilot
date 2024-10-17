@@ -151,5 +151,6 @@ button:focus-visible {
 @media all and (min-width: 768px) {
     .max-w-md {
         width: 28rem;
+        max-width: 28rem;
     }
 }
