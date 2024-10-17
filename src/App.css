@@ -501,7 +501,6 @@
             stroke: #8f52bf;
         }
     }
-   
 }
 .holder2.active {
     path {
@@ -588,5 +587,15 @@
         button {
             max-width: 150px;
         }
+    }
+    .wrapBuy {
+        margin-top: 5px !important;
+    }
+    .selectSol li {
+        font-size: 12px;
+    }
+    .inputBuy,
+    .buttonBuy {
+        padding: 1px 10px;
     }
 }
