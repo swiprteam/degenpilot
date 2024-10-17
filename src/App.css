@@ -475,64 +475,35 @@
     margin-right: 10px;
 }
 .volume {
-    svg:first-child {
-        path {
-            stroke: #428f4f;
-        }
-    }
-    svg:nth-child(2) {
-        path {
-            stroke: #428f4f;
-        }
-    }
-    svg:nth-child(3) {
-        path {
-            stroke: #428f4f;
-        }
-    }
-    svg:nth-child(4) {
+    svg.active {
         path {
             stroke: #428f4f;
         }
     }
 }
 .holder {
-    svg:first-child {
-        path {
-            stroke: #2479dc;
-        }
-    }
-    svg:nth-child(2) {
-        path {
-            stroke: #2479dc;
-        }
-    }
-    svg:nth-child(3) {
+    svg.active {
         path {
             stroke: #2479dc;
         }
     }
 }
 .social {
-    svg:first-child {
+    svg.active {
         path {
             stroke: #d6b749;
         }
     }
 }
 .supply {
-    svg:first-child {
+    svg.active {
         circle {
             stroke: #8f52bf;
         }
     }
-    svg:nth-child(2) {
-        circle {
-            stroke: #8f52bf;
-        }
-    }
+   
 }
-.holder2 {
+.holder2.active {
     path {
         stroke: #f394ef;
     }

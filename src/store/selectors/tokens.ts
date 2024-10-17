@@ -16,3 +16,8 @@ export const selectedTokenSelector = createSelector(
     return Token.byId[tokens.selected];
   }
 );
+
+export const tokensIsLoadingSelector = createSelector(
+  (state: IRootState) => state.tokens,
+  (tokens) => tokens.loading.tokens
+);

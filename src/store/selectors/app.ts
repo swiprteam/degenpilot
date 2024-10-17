@@ -21,3 +21,10 @@ export const showBuySelector = createSelector(
     return app.showBuy;
   }
 );
+
+export const isFlippedSelector = createSelector(
+  (state: IRootState) => state.app,
+  (app) => {
+    return app.isFlipped;
+  }
+);
