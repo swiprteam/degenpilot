@@ -19,16 +19,13 @@ const TokenCard = ({ token }: Props) => {
 };
 
 const StyledTokenCard = styled.div`
-    touch-action: pan-y; /* Allows vertical scrolling */
+    touch-action: pan-y;
     background: #131315;
     border-radius: 20px;
     padding: 10px 20px;
     max-height: 461px;
     @media all and (max-width: 1024px) {
         max-height: 425px;
-    }
-    @media all and (max-width: 375px) and (min-height: 600px) {
-        max-height: 380px;
     }
 `;
 

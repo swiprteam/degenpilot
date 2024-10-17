@@ -557,13 +557,12 @@
         font-size: 14px !important;
     }
 }
-@media all and (max-width: 375px) and (min-height: 600px) {
+@media all and (max-width: 375px) and (min-height: 600px) and (max-height: 800px) {
     .gauge-container {
         height: 200px !important;
         width: 200px !important;
     }
     .gauge-score {
-        top: 25% !important;
         .score-text {
             font-size: 35px !important;
         }
@@ -574,9 +573,6 @@
     .tagNew {
         font-size: 14px;
         right: -25px;
-    }
-    .infoButton {
-        top: -100px !important;
     }
     header {
         width: 100%;

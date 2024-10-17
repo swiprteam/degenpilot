@@ -40,9 +40,6 @@ const FrontFace = styled(Box)`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @media all and (max-width: 375px) and (min-height: 600px) {
-        justify-content: flex-start;
-    }
 `;
 
 const BackFace = styled(Box)`
@@ -127,10 +124,6 @@ const InfoButton = styled.button`
     @media all and (max-width: 1024px) {
         top: -50px;
     }
-    @media all and (max-width: 375px) and (min-height: 600px) {
-        top: -100px;
-    }
-
     &:hover {
         background: linear-gradient(145deg, #3b3b3b, #474747);
         > * {
