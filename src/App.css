@@ -553,6 +553,9 @@
     .dataToken {
         font-size: 14px;
     }
+    .startConnect {
+        font-size: 14px !important;
+    }
 }
 @media all and (max-width: 375px) and (min-height: 600px) {
     .gauge-container {
