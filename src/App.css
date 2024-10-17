@@ -96,11 +96,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 30px;
+    padding-bottom: 5%;
 }
 .tagNew {
     position: absolute;
-    top: -30px;
+    top: 10px;
     right: -20px;
     background-color: rgba(255, 255, 255, 0.1);
     color: #656565;
@@ -122,13 +122,15 @@
     color: #68b790;
     text-transform: uppercase;
     letter-spacing: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 2%;
 }
 .gauge-container {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.04);
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    margin: 10px;
+    margin: 0 auto;
+    height: 245px;
+    width: 245px;
 }
 .gauge {
     margin: 0 auto;
@@ -165,7 +167,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: -55px;
+    margin-top: -35px;
 }
 .imgToken {
     display: flex;
@@ -181,7 +183,7 @@
     text-align: center;
     font-family: "Fira Code", sans-serif;
     font-size: 26px;
-    margin-top: 20px;
+    margin-top: 2%;
     color: #c6c6c6;
     font-weight: 600;
     &.flipped {
@@ -192,7 +194,7 @@
 }
 .dataToken {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -236,7 +238,7 @@
     width: 50px;
 }
 .buttonsToken {
-    min-height: 60px;
+    height: 48px;
     .left {
         left: -10px;
     }
@@ -276,11 +278,17 @@
     font-size: 18px;
 }
 .swipToken {
-    height: 700px;
+    height: 561px;
+    width: 100%;
 }
 
 .wrapperScreen {
     position: relative;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .nav-swiper {
     width: 100px;
@@ -305,7 +313,7 @@
     position: absolute;
     bottom: 0;
     right: -50px;
-    top: 50%;
+    top: 46%;
     transition: all 0.3s ease;
     &:hover {
         background: linear-gradient(145deg, #3b3b3b, #474747);
@@ -376,14 +384,14 @@
     padding: 5px;
     display: block;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     background: #252525;
     z-index: 2;
     background: linear-gradient(145deg, #474747, #3b3b3b);
     border: none;
     position: absolute;
-    bottom: 0;
+    top: -20px;
     right: -10px;
     transition: all 0.3s ease;
     &:hover {
@@ -449,6 +457,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 10px;
     .block {
         border-bottom: 1px solid #656565;
         &:last-child {
@@ -528,3 +537,22 @@
         stroke: #f394ef;
     }
 }
+.balance {
+    font-size: 12px;
+    font-family: "Fira Code", sans-serif;
+    color: #c6c6c6;
+}
+.solonaLogo {
+    width: 10px;
+    height: 13px;
+}
+/* @media all and (max-height: 768px) {
+    .swipToken {
+        height: 500px;
+    }
+    .mobileFlip {
+        height: 300px !important;
+        width: 80% !important;
+        margin: 0 auto;
+    }
+} */

@@ -3,7 +3,7 @@ import TokenImage from "~/components/TokenImage";
 
 const Detail = ({ token }: { token: TokenInterface }) => {
     return (
-        <div className="flex flex-col justify-between items-start w-full h-full m-5">
+        <div className="flex flex-col justify-between items-start w-full h-full mt-2 mb-5">
             <div className="flex flex-row justify-between items-center w-full">
                 <div className="flex flex-row justify-center items-center">
                     <TokenImage token={token} />
@@ -15,8 +15,8 @@ const Detail = ({ token }: { token: TokenInterface }) => {
             </div>
             <div className="wrapperFlip flex flex-col justify-start items-start w-full">
                 <div className="block w-full">
-                    <h3 className="mt-3">volume & liquidity</h3>
-                    <div className="icon flex flex-row mt-2 mb-3 volume">
+                    <h3 className="mt-2">volume & liquidity</h3>
+                    <div className="icon flex flex-row mt-2 mb-2 volume">
                         {Array.from({ length: 6 }).map((_, i) => (
                             <svg
                                 key={i}
@@ -50,8 +50,8 @@ const Detail = ({ token }: { token: TokenInterface }) => {
                     </div>
                 </div>
                 <div className="block w-full">
-                    <h3 className="mt-3">holders info</h3>
-                    <div className="holder icon flex flex-row mt-2 mb-3">
+                    <h3 className="mt-2">holders info</h3>
+                    <div className="holder icon flex flex-row mt-2 mb-2">
                         {Array.from({ length: 6 }).map((_, i) => (
                             <svg
                                 key={i}
@@ -92,7 +92,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
                             </svg>
                         ))}
                     </div>
-                    <div className="icon flex flex-row mt-2 mb-3">
+                    <div className="icon flex flex-row mt-2 mb-2">
                         {Array.from({ length: 6 }).map((_, i) => (
                             <svg
                                 key={i}
@@ -132,8 +132,8 @@ const Detail = ({ token }: { token: TokenInterface }) => {
                     </div>
                 </div>
                 <div className="block w-full">
-                    <h3 className="mt-3">social stats</h3>
-                    <div className="social icon flex flex-row mt-2 mb-3">
+                    <h3 className="mt-2">social stats</h3>
+                    <div className="social icon flex flex-row mt-2 mb-2">
                         {Array.from({ length: 6 }).map((_, i) => (
                             <svg
                                 key={i}
@@ -177,7 +177,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
                     </div>
                 </div>
                 <div className="block w-full">
-                    <h3 className="mt-3">supply audit</h3>
+                    <h3 className="mt-2">supply audit</h3>
                     <div className="supply icon flex flex-row mt-2 mb-2">
                         {Array.from({ length: 6 }).map((_, i) => (
                             <svg

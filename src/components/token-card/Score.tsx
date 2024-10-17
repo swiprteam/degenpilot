@@ -23,7 +23,7 @@ const Flipper = styled.div<{ isFlipped: boolean }>`
         props.isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"};
     position: relative;
     width: 100%;
-    height: 435px;
+    height: 400px;
 `;
 
 const FrontFace = styled(Box)`
@@ -63,9 +63,11 @@ const Score = ({ token }: { token: TokenInterface }) => {
 
     return (
         <>
-            <FlipperContainer className="mt-4 sm:mt-8">
-                <div className="tagNew">New</div>
-                <Flipper isFlipped={isFlipped}>
+            <FlipperContainer className="">
+                <div className={`tagNew ${isFlipped ? "invisible" : ""}`}>
+                    New
+                </div>
+                <Flipper className="mobileFlip" isFlipped={isFlipped}>
                     <FrontFace bordered>
                         <CircularGauge
                             score={token.score.value}
@@ -80,7 +82,9 @@ const Score = ({ token }: { token: TokenInterface }) => {
             </FlipperContainer>
             <div className="relative buttonsToken">
                 <a
-                    className="infoButton left absolute right-0 top-0 m-2 flex"
+                    className={` ${
+                        isFlipped ? "hidden" : ""
+                    } infoButton left absolute right-0 m-2 flex`}
                     href={`https://dexscreener.com/solana/${token.info.address}`}
                     target="_blank">
                     <img src={Canon} alt="" />{" "}
@@ -89,7 +93,7 @@ const Score = ({ token }: { token: TokenInterface }) => {
                 <InfoButton
                     className="absolute right-0 top-0 m-2"
                     onClick={handleFlip}>
-                    <span>i</span>
+                    {isFlipped ? <span>X</span> : <span>i</span>}
                 </InfoButton>
             </div>
         </>
@@ -103,14 +107,14 @@ const InfoButton = styled.button`
     padding: 5px;
     display: block;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     background: #252525;
     z-index: 2;
     background: linear-gradient(145deg, #474747, #3b3b3b);
     border: none;
     position: absolute;
-    bottom: 0;
+    top: -20px;
     right: -10px;
     transition: all 0.3s ease;
     &:hover {
