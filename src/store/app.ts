@@ -4,12 +4,14 @@ export interface AppState {
   isInit: boolean;
   showVideo: boolean;
   showBuy: boolean;
+  isFlipped: boolean;
 }
 
 const initialState: AppState = {
   isInit: false,
   showVideo: false,
   showBuy: false,
+  isFlipped: false,
 };
 
 const appSlice = createSlice({
@@ -25,9 +27,13 @@ const appSlice = createSlice({
     setShowBuy: (state, action: PayloadAction<boolean>) => {
       state.showBuy = action.payload;
     },
+    setIsFliped: (state, action: PayloadAction<boolean>) => {
+      state.isFlipped = action.payload;
+    },
   },
 });
 
-export const { setIsInit, setShowVideo, setShowBuy } = appSlice.actions;
+export const { setIsInit, setShowVideo, setShowBuy, setIsFliped } =
+  appSlice.actions;
 
 export const AppReducer = appSlice.reducer;

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import {
+  isFlippedSelector,
   isInitSelector,
   showBuySelector,
   showVideoSelector,
@@ -15,4 +16,8 @@ export const useShowVideo = () => {
 
 export const useShowBuy = () => {
   return useSelector(showBuySelector);
+};
+
+export const useIsFlipped = () => {
+  return useSelector(isFlippedSelector);
 };

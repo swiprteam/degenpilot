@@ -126,7 +126,7 @@ const TokenList = () => {
                         onSlideNextTransitionEnd={() => {
                             if (!isInit) return;
                             next();
-                            if (selectedToken.index > 2)
+                            if (selectedToken.index >= 2)
                                 swiperRef.current.activeIndex = 2;
                         }}>
                         {visibleTokens.map((token, _index) => {

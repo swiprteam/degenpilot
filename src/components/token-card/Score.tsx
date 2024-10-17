@@ -7,6 +7,9 @@ import Detail from "./Detail";
 import Header from "./Header";
 import { useSelectedToken } from "~/hooks/tokens";
 import Canon from "/canon.png";
+import { useIsFlipped } from "~/hooks/app";
+import { dispatch } from "~/store";
+import { setIsFliped } from "~/store/app";
 
 // Styled components with Tailwind classes
 const FlipperContainer = styled.div`
@@ -54,11 +57,12 @@ const BackFace = styled(Box)`
 `;
 
 const Score = ({ token }: { token: TokenInterface }) => {
-    const [isFlipped, setIsFlipped] = useState(false);
+    const isFlipped = useIsFlipped()
+
 
     const selectedToken = useSelectedToken();
     const handleFlip = () => {
-        setIsFlipped(!isFlipped);
+        dispatch(setIsFliped(!isFlipped));
     };
 
     return (

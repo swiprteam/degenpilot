@@ -48,12 +48,7 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
   } catch (_) {
     Promise.all([
       store.dispatch(fetchChains() as any).unwrap(),
-      store
-        .dispatch(fetchTokens() as any)
-        .unwrap()
-        .then(() => {
-          store.dispatch(select(store.getState().tokens.list[0].id));
-        }),
+      store.dispatch(fetchTokens() as any).unwrap(),
       store.dispatch(setIsInit(true)),
     ]);
   }
@@ -78,13 +73,14 @@ export const fetchTokens = createAsyncThunk("api/tokens", async () => {
       "https://swipr-api-d30d3b6ad1d2.herokuapp.com/tokens"
     );
 
-    return data.map((token, _index) => {
+    const _tokens = data.map((token, _index) => {
       return new Token({
         ...token,
         index: _index,
       });
     });
-
+    dispatch(select(_tokens[0].id));
+    return _tokens;
     //return tokens.map((token) => token.toObject()) as TokenInterface[];
   } catch (e) {
     console.error(e);

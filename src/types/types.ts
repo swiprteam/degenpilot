@@ -8,6 +8,7 @@ export type Score = {
   title: string;
   color: string;
   details: ScoreDetail;
+  grades: TokenGrade[];
 };
 
 enum GradeType {

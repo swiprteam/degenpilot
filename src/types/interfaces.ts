@@ -40,5 +40,4 @@ export interface TokenInterface {
     updatedAt: Date;
   };
   index: number;
-  grades: TokenGrade[];
 }
