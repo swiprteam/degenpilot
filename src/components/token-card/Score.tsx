@@ -57,8 +57,7 @@ const BackFace = styled(Box)`
 `;
 
 const Score = ({ token }: { token: TokenInterface }) => {
-    const isFlipped = useIsFlipped()
-
+    const isFlipped = useIsFlipped();
 
     const selectedToken = useSelectedToken();
     const handleFlip = () => {
