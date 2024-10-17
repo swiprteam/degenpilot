@@ -583,3 +583,40 @@
         font-size: 14px;
     }
 }
+@media all and (max-width: 375px) and (min-height: 600px) {
+    .gauge-container {
+        height: 200px !important;
+        width: 200px !important;
+    }
+    .gauge-score {
+        top: 25% !important;
+        .score-text {
+            font-size: 35px !important;
+        }
+        .score-info {
+            font-size: 12px !important;
+        }
+    }
+    .tagNew {
+        font-size: 14px;
+        right: -25px;
+    }
+    .infoButton {
+        top: -100px !important;
+    }
+    header {
+        width: 100%;
+    }
+    .cardHeader {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .brand {
+            font-size: 12px;
+        }
+        button {
+            max-width: 150px;
+        }
+    }
+}
