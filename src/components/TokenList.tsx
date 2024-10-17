@@ -58,6 +58,28 @@ const TokenList = () => {
         }
     };
 
+    const [spaceBetween, setSpaceBetween] = useState(30); // Default space
+
+    const adjustSwiperSettings = () => {
+        if (window.innerHeight < 600) {
+            setSpaceBetween(10); // Less space for smaller heights
+        } else if (window.innerHeight < 800) {
+            setSpaceBetween(20); // Medium space
+        } else {
+            setSpaceBetween(30); // Default space
+        }
+
+        if (swiperRef.current) {
+            swiperRef.current.update(); // Ensure Swiper recalculates
+        }
+    };
+
+    useEffect(() => {
+        adjustSwiperSettings(); // Adjust on component mount
+        window.addEventListener("resize", adjustSwiperSettings);
+        return () => window.removeEventListener("resize", adjustSwiperSettings);
+    }, []);
+
     const visibleTokens = useMemo(() => {
         return tokens.filter((token) => {
             const isPrev =
@@ -101,13 +123,13 @@ const TokenList = () => {
                                 slidesPerView: 1.2,
                                 spaceBetween: 10,
                             },
-                            600: {
-                                slidesPerView: 1.2,
+                            380: {
+                                slidesPerView: 1.3,
                                 spaceBetween: 20,
                             },
                             300: {
-                                slidesPerView: 1.3,
-                                spaceBetween: 20,
+                                slidesPerView: 1.15,
+                                spaceBetween: 10,
                             },
                         }}
                         speed={500}
