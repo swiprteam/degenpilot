@@ -123,7 +123,7 @@ const TokenListContent = () => {
                                 slidesPerView: 1.2,
                                 spaceBetween: 10,
                             },
-                            380: {
+                            450: {
                                 slidesPerView: 1.3,
                                 spaceBetween: 20,
                             },

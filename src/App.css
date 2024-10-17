@@ -556,7 +556,7 @@
         font-size: 14px !important;
     }
 }
-@media all and (max-width: 375px) and (min-height: 600px) and (max-height: 800px) {
+@media all and (max-width: 450px) and (min-height: 600px) and (max-height: 800px) {
     .gauge-container {
         height: 200px !important;
         width: 200px !important;
@@ -585,11 +585,12 @@
             font-size: 12px;
         }
         button {
-            max-width: 150px;
+            max-width: 144px;
+            overflow: hidden;
         }
     }
     .wrapBuy {
-        margin-top: 5px !important;
+        margin-top: 0px !important;
     }
     .selectSol li {
         font-size: 12px;
