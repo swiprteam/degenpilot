@@ -119,11 +119,19 @@ const TokenListContent = () => {
                             onlyInViewport: false,
                         }}
                         breakpoints={{
+                            1450: {
+                                slidesPerView: 1.2,
+                                spaceBetween: 30,
+                            },
+                            1200: {
+                                slidesPerView: 1.15,
+                                spaceBetween: 20,
+                            },
                             1024: {
                                 slidesPerView: 1.2,
                                 spaceBetween: 10,
                             },
-                            450: {
+                            500: {
                                 slidesPerView: 1.3,
                                 spaceBetween: 20,
                             },
@@ -203,7 +211,7 @@ const TokenListContent = () => {
                         <span className="mr-4 balance">Balance :</span>
                         <img className="solonaLogo" src={solona} alt="solana" />
                         <span className="ml-2">
-                            {Math.round(balance * 10000) / 1000}
+                            {Math.round(balance * 10000) / 10000}
                         </span>
                     </div>
                     <div
