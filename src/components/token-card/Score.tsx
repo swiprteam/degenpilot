@@ -88,7 +88,7 @@ const Score = ({ token }: { token: TokenInterface }) => {
                     className={` ${
                         isFlipped ? "hidden" : ""
                     } infoButton left absolute right-0 m-2 flex`}
-                    href={`https://dexscreener.com/solana/${token.info.address}`}
+                    href={`https://birdeye.so/token/${token.info.address}?chain=solana`}
                     target="_blank">
                     <img src={Canon} alt="" />{" "}
                 </a>
