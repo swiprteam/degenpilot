@@ -8,19 +8,17 @@ export type Score = {
   title: string;
   color: string;
   details: ScoreDetail;
-  grades: TokenGrade[];
+  grades: TokenGrade;
 };
 
-enum GradeType {
-  VOLUME = "volume",
-  SMALL_HOLDERS = "medium_holders",
-  BIG_HOLDERS = "big_holders",
-  SOCIAL = "social",
-}
+
 
 export type TokenGrade = {
-  value: number;
-  type: GradeType;
+  social: number;
+  bigHolders: number;
+  mediumHolders: number;
+  volume: number;
+  supplyAudit: number;
 };
 
 export type TokenMeta = {
@@ -49,6 +47,7 @@ export type TokenInfo = {
   chainId: number;
   rooterContract: string;
   marketCap: number;
+  creationDate: Date
 };
 export type TokenLinks = {
   website: string;

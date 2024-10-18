@@ -10,6 +10,7 @@ import Canon from "/canon.png";
 import { useIsFlipped } from "~/hooks/app";
 import { dispatch } from "~/store";
 import { setIsFliped } from "~/store/app";
+import dayjs from "dayjs";
 
 // Styled components with Tailwind classes
 const FlipperContainer = styled.div`
@@ -67,9 +68,11 @@ const Score = ({ token }: { token: TokenInterface }) => {
     return (
         <>
             <FlipperContainer className="">
-                <div className={`tagNew ${isFlipped ? "invisible" : ""}`}>
-                    New
-                </div>
+                { dayjs(token.info.creationDate).isAfter(dayjs().subtract(15, 'days'))  && (
+                    <div className={`tagNew ${isFlipped ? "invisible" : ""}`}>
+                        New
+                    </div>
+                )}
                 <Flipper className="mobileFlip" isFlipped={isFlipped}>
                     <FrontFace bordered>
                         <CircularGauge
