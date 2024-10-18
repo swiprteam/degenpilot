@@ -1,16 +1,13 @@
+import dayjs from "dayjs";
 import { useState } from "react";
 import styled from "styled-components";
+import { useSelectedToken } from "~/hooks/tokens";
+import { TokenInterface } from "~/types/interfaces";
 import { Box } from "~/utils/styled";
 import CircularGauge from "../CircularJauge";
-import { TokenInterface } from "~/types/interfaces";
 import Detail from "./Detail";
 import Header from "./Header";
-import { useSelectedToken } from "~/hooks/tokens";
 import Canon from "/canon.png";
-import { useIsFlipped } from "~/hooks/app";
-import { dispatch } from "~/store";
-import { setIsFliped } from "~/store/app";
-import dayjs from "dayjs";
 
 // Styled components with Tailwind classes
 const FlipperContainer = styled.div`
@@ -58,11 +55,11 @@ const BackFace = styled(Box)`
 `;
 
 const Score = ({ token }: { token: TokenInterface }) => {
-    const isFlipped = useIsFlipped();
 
+    const [isFlipped, setIsFlipped] = useState(false);
     const selectedToken = useSelectedToken();
     const handleFlip = () => {
-        dispatch(setIsFliped(!isFlipped));
+        setIsFlipped(!isFlipped)
     };
 
     return (
