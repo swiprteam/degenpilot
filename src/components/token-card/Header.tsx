@@ -12,19 +12,6 @@ const Header = ({ token }: { token: TokenInterface }) => (
         </div>
         <div>
             <h1 className="tokenName">{token.info.symbol}</h1>
-
-            {/* {
-                <ul className="absolute right-0 top-0 flex flex-col">
-                    <li className="p-3">
-                        <a
-                            href={`https://dexscreener.com/solana/${token.info.address}`}
-                            target="_blank">
-                            <img src={Graph} alt="graph" />
-                        </a>
-                    </li>
-                </ul>
-            } */}
-
             <ul className="dataToken flex w-full">
                 {token.info.marketCap && (
                     <li className="w-1/2">
