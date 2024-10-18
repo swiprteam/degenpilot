@@ -50,7 +50,7 @@ export const sendBuyTransaction = async ({
     toPubkey: new PublicKey(FEES_WALLET),
     lamports: transferAmount,
   });
-  const amount = JSBI.BigInt(value * 1e9); // Convert input amount to lamports
+  const amount = JSBI.BigInt((inputAmount * 1e9) - transferAmount); // Convert input amount to lamports
 
   const quoteData = await (
     await fetch(
