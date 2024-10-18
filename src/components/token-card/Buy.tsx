@@ -7,18 +7,17 @@ import styled from "styled-components";
 import { EstimationProvider } from "~/context/estimation-context";
 import { useCanSwap, useEstimationOnProgress, useToToken } from "~/hooks/swapper";
 import { useSelectedToken } from "~/hooks/tokens";
-import { setInteractionTransaction } from "~/services/swapper";
+import { setEstimationOnprogress, setInteractionTransaction } from "~/services/swapper";
 import { swapRight } from "~/services/tokens";
 import { sendBuyTransaction } from "~/services/web3";
 import { dispatch } from "~/store";
 import { setFromValue } from "~/store/swapper";
 import { Box, ColorButton } from "~/utils/styled";
-const FEES = 0.01; // 1% fee
 
 const Buy = () => {
-  const token = useSelectedToken();
 
   const estimationOnProgress = useEstimationOnProgress();
+
 
   const { connection, walletProvider } = useWeb3ModalProvider();
   const values = useMemo(
@@ -34,7 +33,6 @@ const Buy = () => {
 
   const [selected, setSelected] = useState("custom");
   const [value, setValue] = useState<string>("");
-  const [slippage, setSlippage] = useState(100);
   const [loading, setLoading] = useState(false);
 
   const canSwap = useCanSwap();
@@ -42,10 +40,13 @@ const Buy = () => {
 
 
   useEffect(() => {
-    setValue('')
+
     dispatch(setFromValue(0))
     setInteractionTransaction(null)
+    setEstimationOnprogress(false)
+    setValue('')
   }, [toToken])
+
   const buyToken = useCallback(async () => {
     await sendBuyTransaction({
       wallet: walletProvider,

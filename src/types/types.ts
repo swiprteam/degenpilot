@@ -15,8 +15,8 @@ export type Score = {
 
 export type TokenGrade = {
   social: number;
-  bigHolders: number;
   mediumHolders: number;
+  littleHolders: number;
   volume: number;
   supplyAudit: number;
 };

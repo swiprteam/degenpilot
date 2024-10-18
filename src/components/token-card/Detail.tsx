@@ -5,9 +5,10 @@ import { useMemo } from "react";
 import dayjs from 'dayjs'
 const Detail = ({ token }: { token: TokenInterface }) => {
   const grades= useMemo(() => {
+    
     return token.score.grades
   }, [token.score.grades]);
-
+  console.log("🚀 ~ grades ~ grades:", grades)
   return (
     <div className="flex flex-col justify-between items-start w-full h-full m-5">
       <div className="flex flex-row justify-between items-center w-full">
@@ -65,7 +66,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
             {Array.from({ length: 6 }).map((_, i) => (
               <svg
                 className={clsx({
-                  active: i < grades.bigHolders,
+                  active: i < grades.mediumHolders,
                 })}
                 key={i}
                 width="29"
@@ -105,7 +106,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
               <svg
                 key={i}
                 className={clsx("holder2", {
-                  active: i < grades.mediumHolders,
+                  active: i < grades.littleHolders,
                 })}
                 width="15"
                 height="15"
@@ -192,6 +193,9 @@ const Detail = ({ token }: { token: TokenInterface }) => {
             {Array.from({ length: 6 }).map((_, i) => (
               <svg
                 key={i}
+                className={clsx({
+                  active: i < grades.supplyAudit,
+                })}
                 width="23"
                 height="20"
                 viewBox="0 0 23 20"
