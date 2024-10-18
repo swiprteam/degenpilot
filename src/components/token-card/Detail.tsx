@@ -5,7 +5,7 @@ import { useMemo } from "react";
 
 const Detail = ({ token }: { token: TokenInterface }) => {
   const grades = useMemo(() => {
-return token.score.grades
+    return token.score.grades
   }, [token.score.grades]);
 
   return (

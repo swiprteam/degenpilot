@@ -58,7 +58,7 @@ const tokensSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTokens.pending, (state) => {
-        state.loading.tokens = true;
+        //state.loading.tokens = true;
       })
       .addCase(fetchTokens.fulfilled, (state, action) => {
         state.loading.tokens = false;

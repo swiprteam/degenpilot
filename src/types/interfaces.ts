@@ -1,4 +1,4 @@
-import { Score, TokenGrade, TokenInfo, TokenLinks } from "./types";
+import { Score, TokenInfo, TokenLinks } from "./types";
 
 export interface ChainInterface {
   id: number | string;

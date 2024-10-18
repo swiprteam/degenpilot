@@ -6,16 +6,20 @@ import {
 } from "./middlewares";
 import persistMiddleware from "./middlewares/persist";
 import appMiddleware from "./middlewares/app";
+import tokensMiddleware from "./middlewares/tokens";
+import swapperMiddleware from './middlewares/swapper';
 import localforage from "localforage";
 import { Web3Reducer } from "./web3";
 import { initStore } from "./api/api";
 import { TokensReducer } from "./tokens";
 import { AppReducer } from "./app";
+import { SwapperReducer } from "./swapper";
 
 export type IRootState = {
   web3: ReturnType<typeof Web3Reducer>;
   tokens: ReturnType<typeof TokensReducer>;
   app: ReturnType<typeof AppReducer>;
+  swapper: ReturnType<typeof SwapperReducer>
 };
 
 localforage.config({
@@ -29,6 +33,7 @@ export const store = configureStore({
     web3: Web3Reducer,
     tokens: TokensReducer,
     app: AppReducer,
+    swapper: SwapperReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -37,7 +42,9 @@ export const store = configureStore({
       convertClassToObjectMiddleware,
       promiseAwaitingMiddleware,
       ...persistMiddleware,
-      ...appMiddleware
+      ...appMiddleware,
+      ...tokensMiddleware,
+      ...swapperMiddleware
     ),
 });
 

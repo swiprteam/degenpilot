@@ -1,6 +1,6 @@
 import { TokenInterface } from "~/types/interfaces";
 import { Serializable } from "./serializable";
-import { Score, TokenGrade, TokenInfo, TokenLinks } from "~/types/types";
+import { Score, TokenInfo, TokenLinks } from "~/types/types";
 
 export class Token
   extends Serializable<TokenInterface>
