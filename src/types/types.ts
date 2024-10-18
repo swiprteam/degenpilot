@@ -56,3 +56,12 @@ export type TokenLinks = {
   telegram: string;
   discord: string;
 };
+
+
+ export interface Estimation {
+  estimation?: number;
+  id?: string;
+  //request?: EstimationRequest;
+  // It is an same of request.steps but with Approve step added if needed
+  error?: string;
+}

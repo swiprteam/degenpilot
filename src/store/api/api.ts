@@ -14,6 +14,7 @@ import { setupWeb3modal } from "~/utils/setup-web3modal";
 import { setIsInit } from "../app";
 import { CACHE_VERSION } from "../middlewares/persist";
 import { getItem } from "~/services/persist";
+import { ActionInteraction, init as initSwapper } from "../swapper";
 const refetchInterval = (fetchingFunction: CallableFunction, timer: number) => {
   return setInterval(fetchingFunction, timer);
 };
@@ -24,6 +25,10 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
   );
 
   store.dispatch(initHistory(localHistory));
+  store.dispatch(initSwapper({
+    hash: null,
+    interaction: ActionInteraction.SWAP
+  }))
 
   try {
     const localChains: ChainInterface[] = JSON.parse(

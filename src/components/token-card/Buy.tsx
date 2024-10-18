@@ -8,6 +8,10 @@ import { Box, ColorButton } from "~/utils/styled";
 import { RotatingLines } from "react-loader-spinner";
 import clsx from "clsx";
 import { useSelectedToken } from "~/hooks/tokens";
+import { setFromValue } from "~/store/swapper";
+import { dispatch } from "~/store";
+import {  EstimationProvider } from "~/context/estimation-context";
+import { useCanSwap } from "~/hooks/swapper";
 const FEES = 0.01; // 1% fee
 
 const Buy = () => {
@@ -28,88 +32,89 @@ const Buy = () => {
     const [slippage, setSlippage] = useState(100);
     const [loading, setLoading] = useState(false);
 
+    const canSwap = useCanSwap()
     const buyToken = useCallback(async () => {
         await sendBuyTransaction({
             wallet: walletProvider,
-            value: parseFloat(value),
             connection,
-            slippage,
-            fees: FEES,
-            output: token.info.address,
         });
-    }, [walletProvider, value, connection, slippage, token.info.address]);
+    }, [walletProvider, connection]);
 
     const isDisabled = useMemo(() => {
         const numberValue = parseFloat(value);
-        return loading || isNaN(numberValue) || numberValue <= 0;
-    }, [value, loading]);
+        return loading || isNaN(numberValue) || numberValue <= 0 || !canSwap;
+    }, [value, loading,canSwap]);
+
     return (
-        <div className="formBuy mt-4 md:mt-8">
-            <Box>
-                <div className="flex flex-col">
-                    <ul className="selectSol flex justify-between gap-1 max-w-full w-full">
-                        {values.map(({ key, value, label }) => (
-                            <SelectButton
-                                active={key === selected}
-                                key={key}
-                                onClick={() => {
-                                    setValue(value.toString());
-                                    setSelected(key);
-                                }}>
-                                {label}
-                            </SelectButton>
-                        ))}
-                    </ul>
+        <EstimationProvider>
+            <div className="formBuy mt-4 md:mt-8">
+                <Box>
+                    <div className="flex flex-col">
+                        <ul className="selectSol flex justify-between gap-1 max-w-full w-full">
+                            {values.map(({ key, value, label }) => (
+                                <SelectButton
+                                    active={key === selected}
+                                    key={key}
+                                    onClick={() => {
+                                        setValue(value.toString());
+                                        setSelected(key);
+                                    }}>
+                                    {label}
+                                </SelectButton>
+                            ))}
+                        </ul>
 
-                    <div className="flex mt-4 wrapBuy">
-                        <Input
-                            className="inputBuy"
-                            name="value"
-                            placeholder="0.00"
-                            value={value}
-                            onChange={(e) => {
-                                const inputValue = e.target.value
-                                    .replace(/,/g, ".")
-                                    .replace(/[^0-9.]/g, "");
-                                setSelected("custom");
-                                setValue(inputValue);
-                            }}
-                        />
-                        <ColorButton
-                            disabled={isDisabled}
-                            onClick={async () => {
-                                if (isDisabled) return;
-                                setLoading(true);
-                                try {
-                                    await buyToken();
-                                    swapRight();
-                                    setLoading(false);
-                                    toast.success("Transaction sent");
-                                } catch {
-                                    setLoading(false);
-                                    toast.error("Transaction failed");
-                                }
-                            }}
-                            className="buttonBuy">
-                            Buy
-                        </ColorButton>
+                        <div className="flex mt-4 wrapBuy">
+                            <Input
+                                className="inputBuy"
+                                name="value"
+                                placeholder="0.00"
+                                value={value}
+                                onChange={(e) => {
+                                    const inputValue = e.target.value
+                                        .replace(/,/g, ".")
+                                        .replace(/[^0-9.]/g, "");
+                                    setSelected("custom");
+                                    setValue(inputValue);
+                                    dispatch(setFromValue(Number(inputValue)))
+                                }}
+                            />
+                            <ColorButton
+                                disabled={isDisabled}
+                                onClick={async () => {
+                                    if (isDisabled) return;
+                                    setLoading(true);
+                                    try {
+                                        await buyToken();
+                                        swapRight();
+                                        setLoading(false);
+                                        toast.success("Transaction sent");
+                                    } catch {
+                                        setLoading(false);
+                                        toast.error("Transaction failed");
+                                    }
+                                }}
+                                className="buttonBuy">
+                                Buy
+                            </ColorButton>
+                        </div>
                     </div>
-                </div>
-            </Box>
+                </Box>
 
-            <Mask
-                className={clsx("justify-center items-center", {
-                    hidden: !loading,
-                    flex: loading,
-                })}>
-                <RotatingLines
-                    visible={loading}
-                    strokeWidth="5"
-                    animationDuration="0.75"
-                    ariaLabel="rotating-lines-loading"
-                />
-            </Mask>
-        </div>
+                <Mask
+                    className={clsx("justify-center items-center", {
+                        hidden: !loading,
+                        flex: loading,
+                    })}>
+                    <RotatingLines
+                        visible={loading}
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        ariaLabel="rotating-lines-loading"
+                    />
+                </Mask>
+            </div>
+        </EstimationProvider>
     );
 };
 
