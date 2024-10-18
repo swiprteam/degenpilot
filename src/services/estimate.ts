@@ -10,7 +10,8 @@ export const estimate = async (wallet: Provider,connection: Connection) => {
 
   const token = getToToken()
 
-  const amount = JSBI.BigInt(getFromValue() * 1e9); // Convert input amount to lamports
+  const fromValue = getFromValue()
+  const amount = JSBI.BigInt((fromValue - fromValue * 0.01) * 1e9); // Convert input amount to lamports
 
   const quoteData = await (
     await fetch(
@@ -36,7 +37,7 @@ export const estimate = async (wallet: Provider,connection: Connection) => {
   const transferInstruction = SystemProgram.transfer({
     fromPubkey: wallet.publicKey,
     toPubkey: new PublicKey(FEES_WALLET),
-    lamports: getFromValue() * 1e9,
+    lamports: getFromValue() * 0.01 * 1e9,
   });
 
 

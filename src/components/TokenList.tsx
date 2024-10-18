@@ -229,7 +229,7 @@ const TokenListContent = () => {
                         <span className="mr-4 balance">Balance :</span>
                         <img className="solonaLogo" src={solona} alt="solana" />
                         <span className="ml-2">
-                            {Math.round(balance * 10000) / 10000}
+                            {Math.round(balance * 10000) / 1000}
                         </span>
                     </div>
                     <div
