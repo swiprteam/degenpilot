@@ -2,9 +2,9 @@ import { TokenInterface } from "~/types/interfaces";
 import TokenImage from "~/components/TokenImage";
 import clsx from "clsx";
 import { useMemo } from "react";
-
+import dayjs from 'dayjs'
 const Detail = ({ token }: { token: TokenInterface }) => {
-  const grades = useMemo(() => {
+  const grades= useMemo(() => {
     return token.score.grades
   }, [token.score.grades]);
 
@@ -26,7 +26,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
             {Array.from({ length: 6 }).map((_, i) => (
               <svg
                 className={clsx({
-                  active: i < grades["volume"],
+                  active: i < grades.volume,
                 })}
                 key={i}
                 width="22"
@@ -65,7 +65,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
             {Array.from({ length: 6 }).map((_, i) => (
               <svg
                 className={clsx({
-                  active: i < grades["big_holders"],
+                  active: i < grades.bigHolders,
                 })}
                 key={i}
                 width="29"
@@ -105,7 +105,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
               <svg
                 key={i}
                 className={clsx("holder2", {
-                  active: i < grades["medium_holders"],
+                  active: i < grades.mediumHolders,
                 })}
                 width="15"
                 height="15"
@@ -143,7 +143,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
               <svg
                 key={i}
                 className={clsx({
-                  active: i < grades["social"],
+                  active: i < grades.social,
                 })}
                 width="21"
                 height="21"
@@ -225,6 +225,9 @@ const Detail = ({ token }: { token: TokenInterface }) => {
               </svg>
             ))}
           </div>
+        </div>
+        <div className="block w-full">
+          <h3 className="mt-3">Updated at: {dayjs(token.meta.updatedAt).format('YYYY-MM-DD HH:MM:ss')}</h3>
         </div>
       </div>
     </div>
