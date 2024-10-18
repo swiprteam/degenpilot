@@ -16,7 +16,7 @@ const Header = () => {
                     <Logo className="w-8 sm:w-10" />
                     Swipr
                 </div>
-                <div className="w-full flex justify-end">
+                <div className="wallet w-full flex justify-end">
                     <AddressButton className="" onClick={() => instance.open()}>
                         <img src={Group} alt="group" className="w-4 sm:w-6" />
                         {shortenAddress(address, 6)}
