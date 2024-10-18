@@ -119,7 +119,7 @@ const TokenListContent = () => {
                             onlyInViewport: false,
                         }}
                         breakpoints={{
-                            1450: {
+                            1650: {
                                 slidesPerView: 1.2,
                                 spaceBetween: 30,
                             },
