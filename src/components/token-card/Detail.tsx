@@ -5,11 +5,7 @@ import { useMemo } from "react";
 
 const Detail = ({ token }: { token: TokenInterface }) => {
   const grades = useMemo(() => {
-    const grades_ = {};
-    token.score.grades.forEach(({ value, type }) => {
-      grades_[type] = value;
-    });
-    return grades_;
+return token.score.grades
   }, [token.score.grades]);
 
   return (
