@@ -61,19 +61,18 @@ const TokenListContent = () => {
     const [spaceBetween, setSpaceBetween] = useState(30); // Default space
     const [slidePerView, setSlidePerView] = useState(1.25); // Default slide per view
 
-
     useEffect(() => {
         swiperRef?.current?.update();
-    },[spaceBetween,slidePerView])
+    }, [spaceBetween, slidePerView]);
 
     const adjustSwiperSettings = () => {
-        setSpaceBetween(calcSpace())
-        setSlidePerView(calcSlides())
+        setSpaceBetween(calcSpace());
+        setSlidePerView(calcSlides());
     };
 
     useEffect(() => {
         adjustSwiperSettings(); // Adjust on component mount
-        window.addEventListener("resize", (adjustSwiperSettings));
+        window.addEventListener("resize", adjustSwiperSettings);
         return () => window.removeEventListener("resize", adjustSwiperSettings);
     }, []);
 
@@ -97,29 +96,21 @@ const TokenListContent = () => {
         });
     }, [walletProvider, connection, isConnected]);
 
-
     const calcSlides = () => {
-        if(window.innerHeight >= 800)
-            return 1.25
+        if (window.innerHeight >= 800) return 1.25;
 
-        if( window.innerHeight >= 720)
-            return 1.25;
-        if(window.innerHeight >= 678)
-            return 1.22
-        if(window.innerHeight >= 645)
-            return 1.15
+        if (window.innerHeight >= 720) return 1.25;
+        if (window.innerHeight >= 678) return 1.22;
+        if (window.innerHeight >= 645) return 1.15;
         return 1;
-    }
+    };
 
     const calcSpace = () => {
-        if( window.innerHeight >= 800)
-            return 10
-        if( window.innerHeight >= 720)
-            return 5;
-        if(window.innerHeight >= 645)
-            return 5
-        return 0
-    }
+        if (window.innerHeight >= 800) return 10;
+        if (window.innerHeight >= 720) return 5;
+        if (window.innerHeight >= 645) return 5;
+        return 0;
+    };
 
     return (
         <AppLayout>
@@ -156,7 +147,6 @@ const TokenListContent = () => {
                                 slidesPerView: 1.3,
                                 spaceBetween: 20,
                             },
-
                         }}
                         speed={500}
                         effect="slide"
