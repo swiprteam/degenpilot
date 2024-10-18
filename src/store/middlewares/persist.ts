@@ -1,6 +1,6 @@
 import { Middleware, PayloadAction } from "@reduxjs/toolkit";
 import { setItem } from "~/services/persist";
-export const CACHE_VERSION = 2;
+export const CACHE_VERSION = 3;
 const persistAPIDataMiddleware: Middleware = () => (next) => (action: any) => {
   next(action);
   const regex = new RegExp(/^api\/(.*)\/fulfilled$/);
