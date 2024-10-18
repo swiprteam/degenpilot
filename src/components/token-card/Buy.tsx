@@ -57,6 +57,7 @@ const Buy = () => {
                                     key={key}
                                     onClick={() => {
                                         setValue(value.toString());
+                                        setFromValue(value);
                                         setSelected(key);
                                     }}>
                                     {label}
