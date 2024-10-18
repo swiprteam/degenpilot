@@ -22,7 +22,7 @@ const CircularGauge = ({
             if (start >= Math.round((score / 100) * totalSegments)) {
                 clearInterval(interval);
             }
-        }, 50); // Ajuster la vitesse d'animation ici
+        }, 25);
         return () => clearInterval(interval);
     }, [score, animate]);
 
