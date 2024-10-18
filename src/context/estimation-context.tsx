@@ -3,6 +3,7 @@ import { useWeb3ModalProvider } from "@web3modal/solana/react";
 import { createContext, useEffect } from "react";
 import { useEstimationHash, useEstimationIsEnabled } from "~/hooks/swapper";
 import { estimate } from "~/services/estimate";
+import { setEstimationOnprogress } from "~/services/swapper";
 import { dispatch } from "~/store";
 import {  setInteractionQuote } from "~/store/swapper";
 
@@ -27,6 +28,7 @@ const EstimationProvider = ({ children }) => {
     dispatch(setInteractionQuote(null));
   }, [hash]);
   useEffect(() => {
+    setEstimationOnprogress(false)
     dispatch(setInteractionQuote(estimationData));
   }, [estimationData]);
 
