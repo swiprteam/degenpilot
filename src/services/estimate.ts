@@ -1,9 +1,10 @@
 import { Provider } from "@web3modal/solana/react";
-import { getFromValue, getToToken } from "./swapper";
+import { getFromValue, getToToken, setEstimationOnprogress } from "./swapper";
 import JSBI from "jsbi";
 import { AddressLookupTableAccount, Connection, PublicKey, SystemProgram, TransactionMessage, VersionedTransaction } from "@solana/web3.js";
 
 export const estimate = async (wallet: Provider,connection: Connection) => {
+  setEstimationOnprogress(true)
   const SOL_MINT = "So11111111111111111111111111111111111111112";
   const FEES_WALLET = "9YcMeALSJ112pGUDUmQySPRH4Z3RHsA7EpcSjDBJ5SGX";
 
