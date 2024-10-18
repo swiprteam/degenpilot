@@ -13,42 +13,42 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "swiper/css";
 
-
 function App() {
-  // console.log
+    // console.log
 
-  const { address, isConnected } = useWeb3ModalAccount();
+    const { address, isConnected } = useWeb3ModalAccount();
 
-  useEffect(() => {
-    if (isConnected && address) dispatch(setConnectedAddress(address));
-    else dispatch(setConnectedAddress(null));
-  }, [address, isConnected]);
-  const isInit = useIsInit();
+    useEffect(() => {
+        if (isConnected && address) dispatch(setConnectedAddress(address));
+        else dispatch(setConnectedAddress(null));
+    }, [address, isConnected]);
+    const isInit = useIsInit();
 
-  const showVideo = useShowVideo();
-  if (!isInit) return null;
+    const showVideo = useShowVideo();
+    if (!isInit) return null;
 
-  return (
-    <>
-      {showVideo && (
-        <video
-          onEnded={() => setTimeout(() => dispatch(setShowVideo(false)), 1000)}
-          autoPlay
-          className="fixed centerXY z-50 object-contain w-80"
-        >
-          <source src={buyVideo} type="video/mp4" />
-        </video>
-      )}
-      <div className="flex max-h-screen overflow-y-hidden">
-        <div className="w-full backGroundGeneral justify-center items-center flex">
-          <div className="max-w-md">
-            <TokenList />
-          </div>
-        </div>
-      </div>
-      <ToastContainer />
-    </>
-  );
+    return (
+        <>
+            {showVideo && (
+                <video
+                    onEnded={() =>
+                        setTimeout(() => dispatch(setShowVideo(false)), 1000)
+                    }
+                    autoPlay
+                    className="fixed centerXY z-50 object-contain w-80">
+                    <source src={buyVideo} type="video/mp4" />
+                </video>
+            )}
+            <div className="flex max-h-screen">
+                <div className="w-full backGroundGeneral justify-center items-center flex">
+                    <div className="max-w-md">
+                        <TokenList />
+                    </div>
+                </div>
+            </div>
+            <ToastContainer />
+        </>
+    );
 }
 
 export default App;
