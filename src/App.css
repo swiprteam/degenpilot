@@ -16,7 +16,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 @keyframes logo-spin {
@@ -571,7 +570,7 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding-bottom: 0;
+        padding-bottom: 5px;
         .brand {
             font-size: 12px;
             margin-bottom: 0;
