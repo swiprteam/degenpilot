@@ -6,7 +6,7 @@ export const estimationIsEnabledSelector = createSelector(
   (state) => {
     const interaction = state.interaction;
     const action = state[interaction];
-    console.log('is',state.is.init,action.value,action.to,state.is.estimationLocked,state.is.onWrite)
+  
     return !!(
       state.is.init &&
       action.value > 0 &&
