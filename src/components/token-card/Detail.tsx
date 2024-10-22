@@ -8,7 +8,7 @@ const Detail = ({ token }: { token: TokenInterface }) => {
     
     return token.score.grades
   }, [token.score.grades]);
-  console.log("🚀 ~ grades ~ grades:", grades)
+
   return (
     <div className="flex flex-col justify-between items-start w-full h-full m-5">
       <div className="flex flex-row justify-between items-center w-full">

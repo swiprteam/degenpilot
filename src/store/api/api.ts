@@ -15,6 +15,7 @@ import { setIsInit } from "../app";
 import { CACHE_VERSION } from "../middlewares/persist";
 import { getItem } from "~/services/persist";
 import { ActionInteraction, init as initSwapper } from "../swapper";
+import { getSelectedToken } from "~/services/tokens";
 const refetchInterval = (fetchingFunction: CallableFunction, timer: number) => {
   return setInterval(fetchingFunction, timer);
 };
@@ -39,14 +40,17 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
       (await getItem(`tokens_${CACHE_VERSION}`)) ?? "[]"
     );
 
-    const selectedToken: string =
-      (await getItem("selected_token")) ?? localTokens[0].id;
+    const selectedToken: string = await getItem("selected_token");
 
     if (!localChains.length) throw Error("No networks on local");
     if (!localTokens.length) throw new Error("No tokens on local");
 
     store.dispatch(setChains(localChains.map((n) => new Chain(n))));
-    store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
+    store.dispatch(fetchTokens() as any);
+    //store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
+    if(selectedToken)
+      store.dispatch(select(selectedToken));
+
     store.dispatch(select(selectedToken));
     store.dispatch(setWeb3Modal(await setupWeb3modal(localChains)));
     store.dispatch(setIsInit(true));
@@ -84,7 +88,9 @@ export const fetchTokens = createAsyncThunk("api/tokens", async () => {
         index: _index,
       });
     });
-    dispatch(select(_tokens[0].id));
+    
+    if(!_tokens.find(t => t.id === getSelectedToken().id))
+      dispatch(select(_tokens[0].id));
     return _tokens;
     //return tokens.map((token) => token.toObject()) as TokenInterface[];
   } catch (e) {
