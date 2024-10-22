@@ -26,10 +26,12 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
   );
 
   store.dispatch(initHistory(localHistory));
-  store.dispatch(initSwapper({
-    hash: null,
-    interaction: ActionInteraction.SWAP
-  }))
+  store.dispatch(
+    initSwapper({
+      hash: null,
+      interaction: ActionInteraction.SWAP,
+    })
+  );
 
   try {
     const localChains: ChainInterface[] = JSON.parse(
@@ -48,8 +50,7 @@ export const initStore = async (store: EnhancedStore<IRootState>) => {
     store.dispatch(setChains(localChains.map((n) => new Chain(n))));
     store.dispatch(fetchTokens() as any);
     //store.dispatch(setTokens(localTokens.map((t) => new Token(t))));
-    if(selectedToken)
-      store.dispatch(select(selectedToken));
+    if (selectedToken) store.dispatch(select(selectedToken));
 
     store.dispatch(select(selectedToken));
     store.dispatch(setWeb3Modal(await setupWeb3modal(localChains)));
@@ -81,6 +82,7 @@ export const fetchTokens = createAsyncThunk("api/tokens", async () => {
     const { data } = await axios.get(
       "https://swipr-api-d30d3b6ad1d2.herokuapp.com/tokens"
     );
+    console.log("🚀 ~ fetchTokens ~ data:", data);
 
     const _tokens = data.map((token, _index) => {
       return new Token({
@@ -88,8 +90,8 @@ export const fetchTokens = createAsyncThunk("api/tokens", async () => {
         index: _index,
       });
     });
-    
-    if(!_tokens.find(t => t.id === getSelectedToken().id))
+
+    if (!_tokens.find((t) => t.id === getSelectedToken()?.id))
       dispatch(select(_tokens[0].id));
     return _tokens;
     //return tokens.map((token) => token.toObject()) as TokenInterface[];
